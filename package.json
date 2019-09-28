@@ -1,0 +1,13 @@
+{
+  "name": "lzl.dev",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "npx @11ty/eleventy",
+    "dev": "npx @11ty/eleventy --serve"
+  },
+  "author": "LZL",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.9.0"
+  }
+}
