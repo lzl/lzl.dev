@@ -6,15 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/assets/base.css">
-  <link rel="stylesheet" href="/assets/index.css">
+  <link rel="stylesheet" href="/assets/blog.css">
 </head>
 <body>
   <header>
     <h1>{{ title }}</h1>
   </header>
-  <main>
-    <img class="avatar" src="/assets/primitive.jpg" alt="avatar" />
+  <article>
     {{ content | safe }}
-  </main>
+    <footer>
+      <time>{{ page.date | date }}</time>
+      <a href="/" rel="author">LZL</a>
+    </footer>
+  </article>
 </body>
 </html>
