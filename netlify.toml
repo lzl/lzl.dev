@@ -1,3 +1,5 @@
 [build]
   command = "npm run start"
   publish = "_site"
+[build.environment]
+  TZ = "Asia/Shanghai"
