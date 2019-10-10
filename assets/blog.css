@@ -26,10 +26,10 @@ strong {
 }
 @media (prefers-color-scheme: dark) {
 	strong {
-		border-radius: 0 0 10px 10px;
+		border-radius: 0px;
 		text-shadow: none;
 		background-image: none;
-		background: linear-gradient(0deg, rgba(255, 255, 0, 0.4) 50%, transparent 50%);
+		background: linear-gradient(0deg, rgba(255, 255, 0, 0.4) 20%, transparent 20%);
 	}
 }
 blockquote {
