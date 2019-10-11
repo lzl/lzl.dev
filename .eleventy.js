@@ -1,21 +1,26 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const { DateTime } = require("luxon");
 
+const offsetHour = -8;
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPassthroughCopy("assets");
 
-  eleventyConfig.addNunjucksFilter("datetime", function(value, TZ) {
-    return DateTime.fromJSDate(value).setZone(TZ).toString();
+  eleventyConfig.addNunjucksFilter("pageDateTime", function(value) {
+    return DateTime.fromJSDate(value).plus({ hours: offsetHour }).setZone('Asia/Shanghai').toString();
   });
-  eleventyConfig.addNunjucksFilter("date", function(value, TZ) {
-    return DateTime.fromJSDate(value).setZone(TZ).toFormat("yyyy'年'L'月'd'日'");
+  eleventyConfig.addNunjucksFilter("pageDate", function(value) {
+    return DateTime.fromJSDate(value).plus({ hours: offsetHour }).setZone('Asia/Shanghai').toFormat("yyyy'年'L'月'd'日'");
   });
-  eleventyConfig.addNunjucksFilter("rssLastUpdatedDate", collection => {
+  eleventyConfig.addNunjucksFilter("feedDateTime", function(value) {
+    return DateTime.fromJSDate(value).plus({ hours: offsetHour }).setZone('utc').toString();
+  });
+  eleventyConfig.addNunjucksFilter("feedLastUpdatedDate", collection => {
     if( !collection || !collection.length ) {
-      throw new Error( "Collection is empty in rssLastUpdatedDate filter." );
+      throw new Error( "Collection is empty in feedLastUpdatedDate filter." );
     }
-    return DateTime.fromJSDate(collection[ collection.length - 1 ].date).setZone('utc').toString();
+    return DateTime.fromJSDate(collection[ collection.length - 1 ].date).plus({ hours: offsetHour }).setZone('utc').toString();
   });
   eleventyConfig.addNunjucksFilter("limit", function(value, limit) {
     return value.slice(0, limit);

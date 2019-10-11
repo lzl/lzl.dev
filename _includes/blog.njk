@@ -13,7 +13,7 @@
     <h1>{{ title }}</h1>
     {{ content | safe }}
     <footer>
-      <time datetime={{ page.date | datetime('Asia/Shanghai') }}>{{ page.date | date('Asia/Shanghai') }}</time>
+      <time datetime={{ page.date | pageDateTime }}>{{ page.date | pageDate }}</time>
       <a href="/" rel="author">LZL</a>
     </footer>
   </article>

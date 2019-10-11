@@ -9,7 +9,7 @@ permalink: /feed.xml
   <link href="{{ site.url }}"/>
   <icon>{{ "/assets/favicon.ico" | url | absoluteUrl(site.url) }}</icon>
   <logo>{{ "/assets/primitive.jpg" | url | absoluteUrl(site.url) }}</logo>
-  <updated>{{ collections.feed | rssLastUpdatedDate }}</updated>
+  <updated>{{ collections.feed | feedLastUpdatedDate }}</updated>
   <id>{{ site.url }}</id>
   <author>
     <name>{{ site.author.name }}</name>
@@ -21,7 +21,7 @@ permalink: /feed.xml
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}"/>
-    <updated>{{ post.date | datetime('utc') }}</updated>
+    <updated>{{ post.date | feedDateTime }}</updated>
     <id>{{ absolutePostUrl }}</id>
     <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
   </entry>
