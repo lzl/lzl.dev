@@ -7,6 +7,8 @@
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/assets/base.css">
   <link rel="stylesheet" href="/assets/blog.css">
+  <link rel="alternate" title="{{ site.title }}" type="application/rss+xml" href="{{ "/feed.xml" | url | absoluteUrl(site.url) }}">
+  <link rel="alternate" title="{{ site.title }}" type="application/json" href="{{ "/feed.json" | url | absoluteUrl(site.url) }}" />
 </head>
 <body>
   <article>
@@ -14,7 +16,7 @@
     {{ content | safe }}
     <footer>
       <time datetime={{ page.date | pageDateTime }}>{{ page.date | pageDate }}</time>
-      <a href="/" rel="author">LZL</a>
+      <a href="/" rel="author">{{ site.author.name }}</a>
     </footer>
   </article>
 </body>
