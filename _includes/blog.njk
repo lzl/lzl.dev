@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <title>{{ title }}</title>
@@ -9,13 +9,11 @@
   <link rel="stylesheet" href="/assets/blog.css">
 </head>
 <body>
-  <header>
-    <h1>{{ title }}</h1>
-  </header>
   <article>
+    <h1>{{ title }}</h1>
     {{ content | safe }}
     <footer>
-      <time>{{ page.date | date }}</time>
+      <time datetime={{ page.date | rssDate }}>{{ page.date | date }}</time>
       <a href="/" rel="author">LZL</a>
     </footer>
   </article>

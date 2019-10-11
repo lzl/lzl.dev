@@ -1,9 +1,7 @@
-header, article {
+article {
 	max-width: var(--width-base);
 	margin: auto;
-}
-article {
-  line-height: 1.8rem;
+	line-height: 1.8rem;
 }
 h1 {
 	font-weight: bold;
