@@ -19,7 +19,7 @@ permalink: /feed.json
         {
             "id": "{{ absolutePostUrl }}",
             "url": "{{ absolutePostUrl  }}",
-            "date_published": "{{ post.date | rssDate }}",
+            "date_published": "{{ post.date | datetime('utc') }}",
             "title": "{{ post.data.title | strip }}",
             "content_html": "{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | strip | safe }}"
         }{% if loop.last == false %},{% endif %}{% endif %}{% endfor %}
