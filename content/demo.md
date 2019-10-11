@@ -3,6 +3,8 @@ layout: blog
 title: 演示
 permalink: "/demo/"
 date: 2019-10-10
+tags: feed
+published: true
 ---
 
 这里是演示文本。
