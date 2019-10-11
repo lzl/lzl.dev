@@ -10,4 +10,10 @@ module.exports = function(eleventyConfig) {
     const day = value.getDate();
     return `${year}年${month}月${day}日`;
   });
+  eleventyConfig.addNunjucksFilter("limit", function(value, limit) {
+    return value.slice(0, limit);
+  });
+  eleventyConfig.addNunjucksFilter("strip", function(value) {
+    return value.replace(/[\n\r]/g, '').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+  });
 };
