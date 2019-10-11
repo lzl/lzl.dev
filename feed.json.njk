@@ -15,13 +15,13 @@ permalink: /feed.json
         "url": "{{ site.url }}",
         "avatar": "{{ "/assets/primitive.jpg" | url | absoluteUrl(site.url) }}"
     },
-    "items": [{% for post in collections.feed | reverse | limit(100) %}{% if post.data.published %}
+    "items": [{% for post in collections.feed | reverse | limit(100) %}{% if post.data.published %}{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(site.url) }}{% endset %}
         {
-            "id": "{{ post.url | url | absoluteUrl(site.url) }}",
-            "url": "{{ post.url | url | absoluteUrl(site.url)  }}",
+            "id": "{{ absolutePostUrl }}",
+            "url": "{{ absolutePostUrl  }}",
             "date_published": "{{ post.date | rssDate }}",
             "title": "{{ post.data.title | strip }}",
-            "content_html": "{{ post.templateContent | htmlToAbsoluteUrls(site.url) | strip | safe }}"
+            "content_html": "{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | strip | safe }}"
         }{% if loop.last == false %},{% endif %}{% endif %}{% endfor %}
     ]
 }

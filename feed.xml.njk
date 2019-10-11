@@ -5,8 +5,10 @@ permalink: /feed.xml
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.title }}</title>
   <subtitle>{{ site.description }}</subtitle>
-  <link href="{{ site.url }}/atom.xml" rel="self"/>
+  <link href="{{ "/feed.xml" | url | absoluteUrl(site.url) }}" rel="self"/>
   <link href="{{ site.url }}"/>
+  <icon>{{ "/assets/favicon.ico" | url | absoluteUrl(site.url) }}</icon>
+  <logo>{{ "/assets/primitive.jpg" | url | absoluteUrl(site.url) }}</logo>
   <updated>{{ collections.feed | rssLastUpdatedDate }}</updated>
   <id>{{ site.url }}</id>
   <author>
