@@ -22,6 +22,9 @@ module.exports = function(eleventyConfig) {
     }
     return DateTime.fromJSDate(collection[ collection.length - 1 ].date).plus({ hours: offsetHour }).setZone('utc').toString();
   });
+  eleventyConfig.addNunjucksFilter("format", function(value, format) {
+    return DateTime.fromJSDate(value).plus({ hours: offsetHour }).setZone('utc').toFormat(String(format));
+  });
   eleventyConfig.addNunjucksFilter("limit", function(value, limit) {
     return value.slice(0, limit);
   });
