@@ -1,6 +1,6 @@
 {
   "name": "lzl.dev",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "scripts": {
     "start": "npx @11ty/eleventy",
     "dev": "npx @11ty/eleventy --serve"
