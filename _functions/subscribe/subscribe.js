@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
-    console.log('ERROR:', 'Method Not Allowed');
+    console.log('ERROR:', 'Method Not Allowed!');
     return { statusCode: 200, body: 'done' };
   }
 
