@@ -5,19 +5,23 @@ const jwt = require('jsonwebtoken');
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
-    console.log('ERROR:', 'Method Not Allowed!');
+    console.log('ERROR:', 'Method Not Allowed');
     return { statusCode: 200, body: 'done' };
   }
 
   try {
     const signature = event.headers["x-webhook-signature"];
+    if (!signature) {
+      console.log('ERROR:', 'signature is not found');
+      return { statusCode: 200, body: 'done' };
+    }
     const decoded = jwt.verify(signature, process.env.WEBHOOK_TOKEN, {
       algorithms: 'HS256',
       issuer: 'netlify',
     });
     const encoded = crypto.createHash('sha256').update(event.body).digest("hex");
     if (decoded.sha256 !== encoded) {
-      console.log('ERROR -1:', 'signature is not correct');
+      console.log('ERROR:', 'signature is not correct');
       return { statusCode: 200, body: 'done' };
     }
 
