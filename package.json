@@ -3,7 +3,8 @@
   "version": "0.4.0",
   "scripts": {
     "start": "npx @11ty/eleventy",
-    "dev": "npx @11ty/eleventy --serve"
+    "dev": "npx @11ty/eleventy --serve",
+    "postinstall": "netlify-lambda install"
   },
   "author": "LZL",
   "license": "MIT",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.0.7",
-    "luxon": "^1.19.3"
+    "luxon": "^1.19.3",
+    "netlify-lambda": "^1.6.3"
   }
 }
