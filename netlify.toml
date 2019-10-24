@@ -1,5 +1,5 @@
 [build]
-  command = "npm run start"
+  command = "npm i && npm run start"
   publish = "_site"
   functions = "_functions"
 [build.environment]
