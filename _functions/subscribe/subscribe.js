@@ -1,55 +1,76 @@
 const fetch = require('node-fetch');
 const base64 = require('base-64');
+const crypto = require('crypto');
 
 exports.handler = async (event, context) => {
-  // Only allow POST
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    console.log('ERROR:', 'Method Not Allowed');
+    return { statusCode: 200, body: 'done' };
   }
-  const errorGen = msg => {
-    return { statusCode: 500, body: msg };
-  };
 
   try {
-    console.log("event body:", event.body)
-    const { email } = JSON.parse(event.body);
-    if (!email) {
-      return errorGen('Missing Email');
+    const { email, name } = JSON.parse(event.body);
+    if (!email && !name) {
+      console.log('ERROR:', 'Email or Name is not found');
+      return { statusCode: 200, body: 'done' };
     }
+
     const subscriber = {
       email_address: email,
       status: 'subscribed',
-    };
-    const creds = `any:${process.env.MAILCHIMP_KEY}`;
-    const response = await fetch(
-      'https://us7.api.mailchimp.com/3.0/lists/2023459a03/members/',
-      {
-        method: 'POST',
-        headers: {
-          Accept: '*/*',
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode(creds)}`,
-        },
-        body: JSON.stringify(subscriber),
+      merge_fields: {
+        FNAME: name
       }
-    );
-    const data = await response.json();
-    if (!response.ok) {
-      // NOT res.status >= 200 && res.status < 300
-      return { statusCode: data.status, body: data.detail };
+    };
+    const baseUrl = 'https://us7.api.mailchimp.com/3.0/lists/2023459a03/members/';
+    const hashedEmail = crypto.createHash('md5').update(email.toLowerCase()).digest("hex");
+    const creds = `any:${process.env.MAILCHIMP_KEY}`;
+    const Authorization = `Basic ${base64.encode(creds)}`;
+    const headers = {
+      Accept: '*/*',
+      'Content-Type': 'application/json',
+      Authorization
     }
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        msg: "You've signed up to the mailing list!",
-        detail: data,
-      }),
-    };
+
+    const status = await fetch(baseUrl + hashedEmail, {
+      method: 'GET',
+      headers
+    })
+    const statusData = await status.json();
+
+    if (statusData.status === 404) {
+      const response = await fetch(
+        baseUrl,
+        {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(subscriber),
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        console.log('ERROR 1:', data);
+      }
+    } else if (statusData.status === 'unsubscribed') {
+      const response = await fetch(
+        baseUrl + hashedEmail,
+        {
+          method: 'PATCH',
+          headers,
+          body: JSON.stringify(subscriber),
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        console.log('ERROR 2:', data);
+      }
+    } else {
+      console.log('ERROR 3:', statusData);
+    }
+
+    return { statusCode: 200, body: 'done' }
   } catch (err) {
-    console.log(err); // output to netlify function log
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
-    };
+    console.log('ERROR 0:', err);
+    return { statusCode: 200, body: 'done' }
   }
 };
