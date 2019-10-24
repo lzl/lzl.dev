@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const base64 = require('base-64');
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
@@ -9,6 +10,17 @@ exports.handler = async (event, context) => {
   }
 
   try {
+    const signature = event.headers["x-webhook-signature"];
+    const decoded = jwt.verify(signature, process.env.WEBHOOK_TOKEN, {
+      algorithms: 'HS256',
+      issuer: 'netlify',
+    });
+    const encoded = crypto.createHash('sha256').update(event.body).digest("hex");
+    if (decoded.sha256 !== encoded) {
+      console.log('ERROR -1:', 'signature is not correct');
+      return { statusCode: 200, body: 'done' };
+    }
+
     const { email, name } = JSON.parse(event.body);
     if (!email && !name) {
       console.log('ERROR:', 'Email or Name is not found');
