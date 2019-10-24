@@ -1,5 +1,10 @@
 [build]
   command = "npm run start"
   publish = "_site"
+  functions = "_functions"
 [build.environment]
   TZ = "Asia/Shanghai"
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
