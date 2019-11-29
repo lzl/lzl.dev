@@ -2,14 +2,21 @@
   "name": "lzl.dev",
   "version": "0.4.0",
   "scripts": {
-    "start": "npx @11ty/eleventy",
-    "dev": "npx @11ty/eleventy --serve",
+    "start": "NODE_ENV=production npm run build:css && npx @11ty/eleventy",
+    "dev": "npm run watch:css & npx @11ty/eleventy --serve",
+    "build:css": "postcss assets/tailwind.css -o assets/index.css",
+    "watch:css": "postcss assets/tailwind.css -o assets/index.css -w",
     "postinstall": "netlify-lambda install"
   },
   "author": "LZL",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^0.9.0"
+    "@11ty/eleventy": "^0.9.0",
+    "@fullhuman/postcss-purgecss": "^1.3.0",
+    "autoprefixer": "^9.7.2",
+    "postcss-cli": "^6.1.3",
+    "stylelint-config-recommended": "^3.0.0",
+    "tailwindcss": "^1.1.4"
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.0.7",

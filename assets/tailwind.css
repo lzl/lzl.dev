@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .markdown {
+  @apply text-gray-700 leading-relaxed;
+
+  > * + * {
+    @apply mt-6;
+  }
+
+  h1 {
+    @apply text-3xl font-bold text-gray-900 leading-tight;
+  }
+
+  a {
+    @apply text-gray-900 underline;
+  }
+} */
