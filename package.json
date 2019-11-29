@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@11ty/eleventy-plugin-rss": "^1.0.7",
-    "luxon": "^1.19.3",
+    "luxon": "^1.21.3",
     "netlify-lambda": "^1.6.3"
   }
 }
