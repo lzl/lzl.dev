@@ -1,6 +1,11 @@
-@tailwind base;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://rsms.me/inter/inter.css');
+
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 /* .markdown {
   @apply text-gray-700 leading-relaxed;
