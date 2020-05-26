@@ -13,6 +13,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0",
     "@fullhuman/postcss-purgecss": "^2.2.0",
+    "@tailwindcss/ui": "^0.3.0",
     "autoprefixer": "^9.8.0",
     "postcss-cli": "^7.1.1",
     "stylelint-config-recommended": "^3.0.0",
