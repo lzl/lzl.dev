@@ -1,0 +1,89 @@
+---
+layout: base
+---
+
+<main class="max-w-xl mx-auto space-y-8 sm:my-10">
+  <section class="bg-white rounded-lg sm:shadow-lg">
+    <article>
+      <header class="relative">
+        <img
+          class="w-full rounded-t-lg"
+          style="filter: saturate(0.6);"
+          src="/assets/WechatIMG163.jpeg"
+          alt="me + baby"
+        />
+        <img
+          class="absolute top-0 left-0 w-24 h-24 mx-2 my-5 sm:w-32 sm:h-32"
+          src="/assets/apphi-logo.png"
+          alt="AppHi"
+        />
+        <h1
+          class="absolute bottom-0 block w-full p-5 text-xl font-bold text-white bg-red-600 opacity-75 sm:w-auto sm:text-3xl sm:rounded-lg sm:m-5"
+          style="
+            background: linear-gradient(
+              90deg,
+              rgba(219, 5, 76, 1) 0%,
+              rgba(236, 2, 89, 1) 35%,
+              rgba(188, 41, 147, 1) 100%
+            );
+          "
+        >
+          {{ title }}
+        </h1>
+      </header>
+      <section class="p-5 sm:p-10 markdown">
+        {{ content | safe }}
+      </section>
+    </article>
+  </section>
+
+  <section class="relative rounded-lg sm:shadow-lg">
+    <a
+      href="https://www.notion.so/AppNana-should-hire-me-outline-3e04b5138c5547dbade4dcf2cc46988e"
+    >
+      <img
+        class="w-full rounded-lg"
+        style="filter: blur(2px);"
+        src="/assets/appnana-outline.jpg"
+        alt="project outline"
+      />
+      <h1
+        class="absolute bottom-0 block w-full p-5 text-xl font-bold text-white bg-red-600 opacity-75 sm:w-auto sm:text-3xl sm:rounded-lg sm:m-5"
+        style="
+          background: linear-gradient(
+            90deg,
+            rgba(219, 5, 76, 1) 0%,
+            rgba(236, 2, 89, 1) 35%,
+            rgba(188, 41, 147, 1) 100%
+          );
+        "
+      >
+        <span class="pb-1 border-b-2 border-white">项目提纲</span>
+      </h1>
+    </a>
+  </section>
+
+  <section class="relative rounded-lg sm:shadow-lg">
+    <a href="">
+      <img
+        class="w-full rounded-lg"
+        style="filter: blur(1px);"
+        src="/assets/appnana-source.jpg"
+        alt="source code"
+      />
+      <h1
+        class="absolute bottom-0 block w-full p-5 text-xl font-bold text-white bg-red-600 opacity-75 sm:w-auto sm:text-3xl sm:rounded-lg sm:m-5"
+        style="
+          background: linear-gradient(
+            90deg,
+            rgba(219, 5, 76, 1) 0%,
+            rgba(236, 2, 89, 1) 35%,
+            rgba(188, 41, 147, 1) 100%
+          );
+        "
+      >
+        <span class="pb-1 border-b-2 border-white">项目源码</span>
+      </h1>
+    </a>
+  </section>
+</main>

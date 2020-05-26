@@ -7,18 +7,14 @@
 @tailwind components;
 @tailwind utilities; */
 
-/* .markdown {
-  @apply text-gray-700 leading-relaxed;
+.markdown {
+  @apply text-lg text-gray-800;
 
   > * + * {
-    @apply mt-6;
-  }
-
-  h1 {
-    @apply text-3xl font-bold text-gray-900 leading-tight;
+    @apply mt-4;
   }
 
   a {
-    @apply text-gray-900 underline;
+    @apply border-b;
   }
-} */
+}
