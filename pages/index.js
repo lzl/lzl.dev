@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import LeftRight from '@components/LeftRight'
 
 export default function Index() {
   return (
@@ -6,7 +7,7 @@ export default function Index() {
       <Head>
         <title>lzl.dev</title>
       </Head>
-      <div className="p-2 text-gray-800">I'm lizunlong</div>
+      <LeftRight />
     </>
   )
 }

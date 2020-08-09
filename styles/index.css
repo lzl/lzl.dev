@@ -1,6 +1,6 @@
 @tailwind base;
 html {
-  @apply font-sans antialiased text-black bg-gray-50;
+  @apply font-sans antialiased text-gray-900;
 }
 @tailwind components;
 @tailwind utilities;

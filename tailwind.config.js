@@ -7,6 +7,12 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      width: {
+        '350': '350px',
+      },
+      maxWidth: {
+        '512': '512px',
+      },
     },
   },
   variants: {},
