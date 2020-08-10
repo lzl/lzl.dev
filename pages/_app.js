@@ -1,12 +1,12 @@
-import Head from 'next/head'
+// import Head from 'next/head'
 import '../styles/index.css'
 
 function App({ Component, pageProps }) {
   return (
     <>
-      <Head>
+      {/* <Head>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      </Head>
+      </Head> */}
       <Component {...pageProps} />
     </>
   )
