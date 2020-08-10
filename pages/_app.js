@@ -1,12 +1,14 @@
-// import Head from 'next/head'
+import Head from 'next/head'
 import '../styles/index.css'
 
 function App({ Component, pageProps }) {
   return (
     <>
-      {/* <Head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-      </Head> */}
+      <Head>
+        <meta charSet="utf-8" />
+        <title>LZL · 李尊龙</title>
+        <link rel="shortcut icon" href="/lzl.png" type="image/x-icon" />
+      </Head>
       <Component {...pageProps} />
     </>
   )

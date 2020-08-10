@@ -4,7 +4,8 @@ export default function LeftRight({ left, right }) {
   return (
     <div className="flex flex-col h-screen overflow-hidden sm:overflow-visible sm:flex-row">
       <div className="flex flex-col sm:border-r sm:border-gray-200 sm:w-350">
-        <div className="p-4 border-b border-gray-200">
+        <div className="flex p-4 space-x-3 border-b border-gray-200">
+          <img src="/lzl.png" alt="lzl" className="w-6 h-6 rounded" />
           <h1 className="font-bold">LZL · 李尊龙</h1>
         </div>
         <aside className="flex-1 hidden p-4 overflow-y-auto sm:block">
