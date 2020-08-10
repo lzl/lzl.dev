@@ -12,7 +12,7 @@ export default function LeftRight({ left, right }) {
         </aside>
       </div>
       <div className="flex-1 overflow-y-auto">
-        <article className="p-4 prose sm:max-w-512 md:prose-lg">
+        <article className="p-4 prose-lg sm:max-w-512">
           {right ? right : <LoremIpsum />}
         </article>
         <aside className="block p-4 border-t border-gray-200 sm:hidden">
