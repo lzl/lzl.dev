@@ -1,5 +1,8 @@
 import Head from 'next/head'
-import '../styles/index.css'
+
+import LeftRight from '@components/LeftRight'
+import Menu from '@components/Menu'
+import '@styles/index.css'
 
 function App({ Component, pageProps }) {
   return (
@@ -9,7 +12,7 @@ function App({ Component, pageProps }) {
         <title>LZL · 李尊龙</title>
         <link rel="shortcut icon" href="/lzl.png" type="image/x-icon" />
       </Head>
-      <Component {...pageProps} />
+      <LeftRight left={<Menu />} right={<Component {...pageProps} />} />
     </>
   )
 }

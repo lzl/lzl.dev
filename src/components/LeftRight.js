@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import LoremIpsum from '@components/LoremIpsum'
 
 export default function LeftRight({ left, right }) {
   return (
@@ -12,15 +11,13 @@ export default function LeftRight({ left, right }) {
           </a>
         </Link>
         <aside className="flex-1 hidden p-4 overflow-y-auto sm:block">
-          <div className="prose">{left ? left : <LoremIpsum />}</div>
+          {left}
         </aside>
       </div>
       <div className="flex-1 overflow-y-auto">
-        <article className="p-4 prose-lg sm:max-w-512">
-          {right ? right : <LoremIpsum />}
-        </article>
+        <article className="p-4 prose-lg sm:max-w-512">{right}</article>
         <aside className="block p-4 border-t border-gray-200 sm:hidden">
-          <div className="prose">{left ? left : <LoremIpsum />}</div>
+          {left}
         </aside>
       </div>
     </div>
