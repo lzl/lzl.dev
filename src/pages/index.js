@@ -1,10 +1,13 @@
 import LeftRight from '@/components/LeftRight'
-import Menu from '@/components/Menu'
 
-function Page() {
-  return <p>Go!</p>
+function Left() {
+  return <p>Next</p>
+}
+
+function Right() {
+  return <p>JS</p>
 }
 
 export default function Index() {
-  return <LeftRight left={<Menu />} right={<Page />} />
+  return <LeftRight left={<Left />} right={<Right />} />
 }
