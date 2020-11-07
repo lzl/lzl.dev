@@ -1,21 +1,7 @@
 import { useState } from 'react'
-import Router from 'next/router'
 
 import LeftRight from '@/components/LeftRight'
-
-const signin = async (email, password) => {
-  const response = await fetch('/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password }),
-  })
-
-  if (response.status !== 200) {
-    throw new Error(await response.text())
-  }
-
-  Router.push('/profile')
-}
+import { login } from '@/utils/auth'
 
 function Left() {
   return <p>Next</p>
@@ -36,7 +22,7 @@ function Right() {
     const password = userData.password
 
     try {
-      await signin(email, password)
+      await login(email, password)
     } catch (error) {
       console.error(error)
       setUserData({ ...userData, error: error.message })

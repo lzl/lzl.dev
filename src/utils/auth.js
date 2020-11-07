@@ -1,8 +1,18 @@
 import { useEffect } from 'react'
 import Router from 'next/router'
 
-export const login = ({ email }) => {
-  Router.push('/')
+export const login = async (email, password) => {
+  const response = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  })
+
+  if (response.status !== 200) {
+    throw new Error(await response.text())
+  }
+
+  Router.push('/profile')
 }
 
 export const logout = async () => {
