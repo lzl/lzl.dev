@@ -1,7 +1,3 @@
 {
-  "build": {
-    "env": {
-      "FAUNA_SERVER_KEY": "@lzl-dev-fauna-secret-key"
-    }
-  }
+  "version": 2
 }
