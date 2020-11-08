@@ -1,7 +1,5 @@
-import useAuthStore from '@/stores/auth'
-
-export default function ButtonSubmit() {
-  const loading = useAuthStore((s) => s.loading)
+export default function ButtonSubmit(props) {
+  const { children, loading } = props
 
   return (
     <button
@@ -44,7 +42,7 @@ export default function ButtonSubmit() {
           </svg>
         )}
       </span>
-      {loading ? 'Processing' : 'Sign in'}
+      {loading ? 'Processing' : children}
     </button>
   )
 }

@@ -20,7 +20,7 @@ function Right() {
   if (error) return <p>An error has occurred: {error.message}</p>
   return (
     <>
-      <p>{data.userId}</p>
+      <p>Email: {data.email}</p>
       <button onClick={logout}>Logout</button>
     </>
   )

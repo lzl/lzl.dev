@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { QueryCache, ReactQueryCacheProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query-devtools'
 
 import '@/styles/index.css'
 
@@ -14,6 +15,7 @@ function App({ Component, pageProps }) {
         <link rel="shortcut icon" href="/lzl.png" type="image/x-icon" />
       </Head>
       <Component {...pageProps} />
+      <ReactQueryDevtools initialIsOpen />
     </ReactQueryCacheProvider>
   )
 }

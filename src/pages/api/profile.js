@@ -4,8 +4,9 @@ import cookie from 'cookie'
 import { faunaClient, FAUNA_SECRET_COOKIE } from '@/utils/fauna-auth'
 
 export const profileApi = async (faunaSecret) => {
-  const ref = await faunaClient(faunaSecret).query(q.Identity())
-  return ref.id
+  return await faunaClient(faunaSecret).query(
+    q.Select(['data'], q.Get(q.Identity()))
+  )
 }
 
 export default async function profile(req, res) {
@@ -16,5 +17,7 @@ export default async function profile(req, res) {
     return res.status(401).send('Auth cookie missing.')
   }
 
-  res.status(200).json({ userId: await profileApi(faunaSecret) })
+  const profile = await profileApi(faunaSecret)
+
+  res.status(200).json(profile)
 }
