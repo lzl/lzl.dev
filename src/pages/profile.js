@@ -1,24 +1,16 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useQuery } from 'react-query'
 
 import LeftRight from '@/components/LeftRight'
 import { logout } from '@/utils/auth'
 import useAuth from '@/hooks/useAuth'
+import useProfile from '@/hooks/useProfile'
 
 function Right() {
   useAuth()
 
   const router = useRouter()
-  const { isLoading, error, data } = useQuery('profile', () =>
-    fetch('/api/profile').then((res) => {
-      if (res.status >= 300) {
-        throw new Error('API Client error')
-      }
-
-      return res.json()
-    })
-  )
+  const { isLoading, error, data } = useProfile()
 
   useEffect(() => {
     if (error) router.push('/login')
