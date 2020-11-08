@@ -3,10 +3,6 @@ import Router from 'next/router'
 
 import LeftRight from '@/components/LeftRight'
 
-function Left() {
-  return <p>Next</p>
-}
-
 function Right() {
   const [userData, setUserData] = useState({
     email: '',
@@ -109,5 +105,5 @@ function Right() {
 }
 
 export default function Signup() {
-  return <LeftRight left={<Left />} right={<Right />} />
+  return <LeftRight right={<Right />} />
 }

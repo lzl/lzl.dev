@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import Menu from '@/components/Menu'
+
 export default function LeftRight({ left, right }) {
   return (
     <div className="flex flex-col h-screen overflow-hidden sm:overflow-visible sm:flex-row">
@@ -11,7 +13,7 @@ export default function LeftRight({ left, right }) {
           </a>
         </Link>
         <aside className="flex-1 hidden p-4 overflow-y-auto sm:block">
-          {left}
+          {left || <Menu />}
         </aside>
       </div>
       <div className="flex-1 overflow-y-auto">

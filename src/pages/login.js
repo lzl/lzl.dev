@@ -2,12 +2,11 @@ import { useState } from 'react'
 
 import LeftRight from '@/components/LeftRight'
 import { login } from '@/utils/auth'
-
-function Left() {
-  return <p>Next</p>
-}
+import useAuth from '@/hooks/useAuth'
 
 function Right() {
+  useAuth()
+
   const [userData, setUserData] = useState({
     email: '',
     password: '',
@@ -99,5 +98,5 @@ function Right() {
 }
 
 export default function Login() {
-  return <LeftRight left={<Left />} right={<Right />} />
+  return <LeftRight right={<Right />} />
 }

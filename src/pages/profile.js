@@ -3,13 +3,12 @@ import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
 import LeftRight from '@/components/LeftRight'
-import { logout, withAuthSync } from '@/utils/auth'
-
-function Left() {
-  return <p>Next</p>
-}
+import { logout } from '@/utils/auth'
+import useAuth from '@/hooks/useAuth'
 
 function Right() {
+  useAuth()
+
   const router = useRouter()
   const { isLoading, error, data } = useQuery('profile', () =>
     fetch('/api/profile').then((res) => {
@@ -35,6 +34,6 @@ function Right() {
   )
 }
 
-export default withAuthSync(function Profile() {
-  return <LeftRight left={<Left />} right={<Right />} />
-})
+export default function Profile() {
+  return <LeftRight right={<Right />} />
+}
