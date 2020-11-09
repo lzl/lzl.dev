@@ -8,6 +8,7 @@ import FormAuth, {
   InputPassword,
   ButtonSubmit,
 } from '@/components/FormAuth'
+import Menu, { authMenu } from '@/components/Menu'
 
 function Right() {
   useAuth()
@@ -45,5 +46,5 @@ function Right() {
 }
 
 export default function Signup() {
-  return <LeftRight right={<Right />} />
+  return <LeftRight left={<Menu data={authMenu} />} right={<Right />} />
 }

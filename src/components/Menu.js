@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const data = [
+const defaultMenu = [
   {
     title: 'Google',
     url: 'https://google.com/ncr',
@@ -31,7 +31,18 @@ const data = [
   },
 ]
 
-export default function Menu() {
+export const authMenu = [
+  {
+    title: 'Login',
+    url: '/login',
+  },
+  {
+    title: 'Signup',
+    url: '/signup',
+  },
+]
+
+export default function Menu({ data = defaultMenu }) {
   return (
     <ul className="space-y-2">
       {data.map(({ title, url }) => (
