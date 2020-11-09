@@ -1,10 +1,10 @@
 import { query as q } from 'faunadb'
 import cookie from 'cookie'
 
-import { faunaClient, FAUNA_SECRET_COOKIE } from '@/utils/fauna-auth'
+import { userClient, FAUNA_SECRET_COOKIE } from '@/utils/fauna-auth'
 
 export const profileApi = async (faunaSecret) => {
-  return await faunaClient(faunaSecret).query(
+  return await userClient(faunaSecret).query(
     q.Select(['data'], q.Get(q.Identity()))
   )
 }

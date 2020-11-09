@@ -8,7 +8,7 @@ export const serverClient = new faunadb.Client({
 })
 
 // Used for any authed requests.
-export const faunaClient = (secret) =>
+export const userClient = (secret) =>
   new faunadb.Client({
     secret,
   })
