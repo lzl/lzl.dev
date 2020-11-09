@@ -39,7 +39,7 @@ function Right() {
         <InputPassword value={password} onChange={handleChangePassword} />
       </div>
       <ButtonSubmit loading={isLoading}>Sign in</ButtonSubmit>
-      {error && <div className="text-sm">{error}</div>}
+      {error && <div className="text-sm">{error.message}</div>}
     </FormAuth>
   )
 }

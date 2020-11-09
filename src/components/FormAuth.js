@@ -53,6 +53,7 @@ export function ButtonSubmit(props) {
     <div>
       <button
         type="submit"
+        disabled={loading}
         className="relative flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md group hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700"
       >
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
