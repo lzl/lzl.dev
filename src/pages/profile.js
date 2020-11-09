@@ -32,7 +32,7 @@ function Right() {
           type="button"
           onClick={logout}
           disabled={isLogoutLoading}
-          className="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md hover:bg-gray-500 focus:outline-none focus:shadow-outline-gray focus:border-gray-700 active:bg-gray-700"
+          className="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md group hover:bg-gray-500 focus:outline-none focus:shadow-outline-gray focus:border-gray-700 active:bg-gray-700"
         >
           {isLogoutLoading ? (
             <svg
@@ -61,7 +61,7 @@ function Right() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-5 h-5 mr-2 -ml-1"
+              className="w-5 h-5 mr-2 -ml-1 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
             >
               <path
                 strokeLinecap="round"
