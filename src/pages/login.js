@@ -3,10 +3,11 @@ import { useCallback, useState } from 'react'
 import useAuth from '@/hooks/useAuth'
 import useLogin from '@/hooks/useLogin'
 import LeftRight from '@/components/LeftRight'
-import FormLogin from '@/components/FormLogin'
-import InputEmail from '@/components/InputEmail'
-import InputPassword from '@/components/InputPassword'
-import ButtonSubmit from '@/components/ButtonSubmit'
+import FormAuth, {
+  InputEmail,
+  InputPassword,
+  ButtonSubmit,
+} from '@/components/FormAuth'
 
 function Right() {
   useAuth()
@@ -32,22 +33,14 @@ function Right() {
   }
 
   return (
-    <FormLogin onSubmit={handleSubmit}>
+    <FormAuth onSubmit={handleSubmit}>
       <div className="rounded-md shadow-sm">
-        <div>
-          <InputEmail value={email} onChange={handleChangeEmail} />
-        </div>
-        <div className="-mt-px">
-          <InputPassword value={password} onChange={handleChangePassword} />
-        </div>
+        <InputEmail value={email} onChange={handleChangeEmail} />
+        <InputPassword value={password} onChange={handleChangePassword} />
       </div>
-
-      <div>
-        <ButtonSubmit loading={isLoading}>Sign in</ButtonSubmit>
-      </div>
-
+      <ButtonSubmit loading={isLoading}>Sign in</ButtonSubmit>
       {error && <div className="text-sm">{error}</div>}
-    </FormLogin>
+    </FormAuth>
   )
 }
 
