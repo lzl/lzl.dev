@@ -19,7 +19,10 @@ export default function LeftRight({ left, right, full = false }) {
       </div>
       <div className="flex-1 overflow-y-auto">
         <article
-          className={clsx('p-4', full ? 'w-full' : 'prose-lg sm:max-w-512')}
+          className={clsx(
+            'p-4',
+            full ? 'w-full h-full' : 'prose-lg sm:max-w-512'
+          )}
         >
           {right}
         </article>
