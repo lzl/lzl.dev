@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 import LeftRight from '@/components/LeftRight'
+import Menu, { profileMenu } from '@/components/Menu'
 import useAuth from '@/hooks/useAuth'
 import useProfile from '@/hooks/useProfile'
 import useLogout from '@/hooks/useLogout'
@@ -79,5 +80,5 @@ function Right() {
 }
 
 export default function Profile() {
-  return <LeftRight right={<Right />} />
+  return <LeftRight left={<Menu data={profileMenu} />} right={<Right />} />
 }

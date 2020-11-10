@@ -42,6 +42,17 @@ export const authMenu = [
   },
 ]
 
+export const profileMenu = [
+  {
+    title: 'Profile',
+    url: '/profile',
+  },
+  {
+    title: 'Table',
+    url: '/table',
+  },
+]
+
 export default function Menu({ data = defaultMenu }) {
   return (
     <ul className="space-y-2">
