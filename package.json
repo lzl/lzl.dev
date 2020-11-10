@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@tailwindcss/ui": "^0.7.2",
+    "clsx": "^1.1.1",
     "cookie": "^0.4.1",
     "faunadb": "^3.0.1",
+    "namor": "^2.0.2",
     "next": "10.0.1",
     "postcss-flexbugs-fixes": "^5.0.0",
     "postcss-preset-env": "^6.7.0",
