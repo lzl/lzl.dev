@@ -51,6 +51,10 @@ export const profileMenu = [
     title: 'Table',
     url: '/table',
   },
+  {
+    title: 'Form',
+    url: '/form',
+  },
 ]
 
 export default function Menu({ data = defaultMenu }) {
