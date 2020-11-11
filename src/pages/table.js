@@ -20,18 +20,14 @@ function Table({ columns, data }) {
   return (
     <div className="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
       <table
-        className="w-full min-w-full divide-y divide-gray-200"
+        className="min-w-full divide-y divide-gray-200"
         {...getTableProps()}
       >
-        <thead className="table w-full table-fixed">
+        <thead>
           {headerGroups.map((headerGroup, groupIndex) => {
             // console.log('headerGroup:', headerGroup)
             return (
-              <tr
-                className="table w-full table-fixed"
-                key={groupIndex}
-                {...headerGroup.getHeaderGroupProps()}
-              >
+              <tr key={groupIndex} {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => {
                   // console.log('column:', column)
                   return (
@@ -49,19 +45,14 @@ function Table({ columns, data }) {
           })}
         </thead>
         <tbody
-          className="block w-full overflow-auto bg-white divide-y divide-gray-200"
-          style={{ maxHeight: 'calc(100vh - 32px - 40px)' }}
+          className="bg-white divide-y divide-gray-200"
           {...getTableBodyProps()}
         >
           {rows.map((row) => {
             // console.log('row:', row)
             prepareRow(row)
             return (
-              <tr
-                className="table w-full table-fixed"
-                key={row.id}
-                {...row.getRowProps()}
-              >
+              <tr key={row.id} {...row.getRowProps()}>
                 {row.cells.map((cell, cellIndex) => {
                   // console.log('cell:', cell)
                   return (
