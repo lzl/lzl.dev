@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@hookform/resolvers": "^1.0.1",
     "@tailwindcss/ui": "^0.7.2",
     "clsx": "^1.1.1",
     "cookie": "^0.4.1",
@@ -22,10 +23,12 @@
     "react-query": "^2.26.2",
     "react-query-devtools": "^2.6.3",
     "react-table": "^7.6.1",
+    "superstruct": "^0.10.12",
     "tailwindcss": "^1.9.6",
     "zustand": "^3.1.4"
   },
   "devDependencies": {
+    "@hookform/devtools": "^2.2.1",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
