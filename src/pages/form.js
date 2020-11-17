@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form'
-import { DevTool } from '@hookform/devtools'
 
 import LeftRight from '@/components/LeftRight'
 import Menu, { profileMenu } from '@/components/Menu'
 
 function Right() {
-  const { register, handleSubmit, errors, control } = useForm()
+  const { register, handleSubmit, errors } = useForm()
 
   const onSubmit = (data) => {
     console.log('onSubmit:', data)
@@ -57,14 +56,13 @@ function Right() {
                   Email address
                 </label>
                 <input
-                  ref={register}
-                  // ref={register({
-                  //   required: 'Required',
-                  //   pattern: {
-                  //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  //     message: 'invalid email address',
-                  //   },
-                  // })}
+                  ref={register({
+                    required: 'Required',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'invalid email address',
+                    },
+                  })}
                   id="email"
                   name="email"
                   className="block w-full mt-1 transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
@@ -158,7 +156,6 @@ function Right() {
           </div>
         </div>
       </form>
-      <DevTool control={control} />
     </>
   )
 }
