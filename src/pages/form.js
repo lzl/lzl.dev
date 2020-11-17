@@ -1,36 +1,17 @@
 import { useForm } from 'react-hook-form'
 import { DevTool } from '@hookform/devtools'
-import { superstructResolver } from '@hookform/resolvers/superstruct'
-import { object, string, struct } from 'superstruct'
 
 import LeftRight from '@/components/LeftRight'
 import Menu, { profileMenu } from '@/components/Menu'
 
-const Email = struct('Email', (string) => {
-  console.log({ string })
-  return /.+@.+\..+/.test(string)
-})
-
-const schema = object({
-  firstName: string(),
-  lastName: string(),
-  email: Email,
-  country: string(),
-  city: string(),
-  state: string(),
-  postal: string(),
-})
-
 function Right() {
-  const { register, handleSubmit, errors, control } = useForm({
-    resolver: superstructResolver(schema),
-  })
+  const { register, handleSubmit, errors, control } = useForm()
 
   const onSubmit = (data) => {
-    console.log({ data })
+    console.log('onSubmit:', data)
   }
 
-  console.log({ errors })
+  console.log('errors:', errors)
 
   return (
     <>

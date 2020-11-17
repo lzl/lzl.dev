@@ -23,7 +23,6 @@
     "react-query": "^2.26.2",
     "react-query-devtools": "^2.6.3",
     "react-table": "^7.6.2",
-    "superstruct": "^0.10.12",
     "tailwindcss": "^1.9.6",
     "zustand": "^3.2.0"
   },
