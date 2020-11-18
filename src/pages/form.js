@@ -1,13 +1,17 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import LeftRight from '@/components/LeftRight'
 import Menu, { profileMenu } from '@/components/Menu'
+import { isEmptyObject } from '@/utils/helpers'
 
 function Right() {
   const { register, handleSubmit, errors } = useForm()
+  const [formData, setFormData] = useState({})
 
   const onSubmit = (data) => {
     console.log('onSubmit:', data)
+    setFormData(data)
   }
 
   console.log('errors:', errors)
@@ -156,6 +160,10 @@ function Right() {
           </div>
         </div>
       </form>
+      {!isEmptyObject(formData) && (
+        <pre>{JSON.stringify(formData, null, 2)}</pre>
+      )}
+      <div></div>
     </>
   )
 }
