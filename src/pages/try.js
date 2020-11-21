@@ -4,139 +4,34 @@ import { Provider, atom, useAtom } from 'jotai'
 import { proxy, useProxy } from 'valtio'
 import produce from 'immer'
 import pipe from 'ramda/src/pipe'
-import { useForm } from 'react-hook-form'
 
 import LeftRight from '@/components/LeftRight'
 
-// Log every time state is changed
-const log = (config) => (set, get, api) =>
-  config(
-    (args) => {
-      console.log('  applying', args)
-      set(args)
-      console.log('  new state', get())
-    },
-    get,
-    api
-  )
-
-// Turn the set method into an immer proxy
-const immer = (config) => (set, get, api) =>
-  config((fn) => set(produce(fn)), get, api)
-
-const createStore = pipe(log, immer, create)
-
-const defaultState = {
-  bears: {
-    total: 0,
-    list: [],
-  },
-}
-
-const useStore = createStore((set) => ({
-  ...defaultState,
-  add: (bear) =>
-    set((state) => {
-      state.bears.list.push(bear)
-      state.bears.total += 1
-    }),
-  reset: () =>
-    set((state) => {
-      state.bears = defaultState.bears
-    }),
-}))
-
-function BearCounter() {
-  const total = useStore((state) => state.bears.total)
-  return <p>{total} around here ...</p>
-}
-
-function BearList() {
-  const total = useStore((state) => state.bears.total)
-  const list = useStore((state) => state.bears.list)
-
-  if (total > 0) {
-    return (
-      <ul className="flex space-x-2">
-        {list.map((b, i) => (
-          <li key={i}>{b}</li>
-        ))}
-      </ul>
-    )
-  }
-
-  return null
-}
-
-function Controls() {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { isSubmitSuccessful },
-  } = useForm()
-  const add = useStore((state) => state.add)
-  const handleReset = useStore((state) => state.reset)
-
-  React.useEffect(() => {
-    if (isSubmitSuccessful) {
-      console.log('reset')
-      reset()
-    }
-  }, [isSubmitSuccessful, reset])
-
-  const onSubmit = (data) => {
-    console.log('onSubmit:', data)
-    if (data.bear) add(data.bear)
-  }
-
-  return (
-    <div className="mt-2 space-y-2">
-      <form className="space-x-2" onSubmit={handleSubmit(onSubmit)}>
-        <input ref={register} name="bear" type="text" />
-        <button type="submit">submit</button>
-        <button onClick={handleReset}>reset</button>
-      </form>
-    </div>
-  )
-}
-
-const countAtom = atom(0)
-
-function Counter() {
-  const [count, setCount] = useAtom(countAtom)
+function Counter({ name, value }) {
   return (
     <div className="flex space-x-2">
-      <button onClick={() => setCount((c) => c + 1)}>up</button>
-      <div>{count}</div>
+      <div>{name}:</div>
+      <div>{value}</div>
     </div>
   )
 }
 
-const state = proxy({ count: 0, text: 'hello' })
-
-function Counter2() {
-  const snapshot = useProxy(state)
-  // Rule of thumb: read from snapshots, mutate the source
-  // The component renders when the snapshot-reads change
+function Controller({ up }) {
   return (
-    <div className="flex space-x-2">
-      <button onClick={() => ++state.count}>+1</button>
-      <div>{snapshot.count}</div>
+    <div>
+      <button onClick={up}>+1</button>
     </div>
   )
 }
 
+// context START
 const CountStateContext = React.createContext()
 const CountDispatchContext = React.createContext()
 
 function countReducer(state, action) {
   switch (action.type) {
-    case 'increment': {
+    case 'up': {
       return { count: state.count + 1 }
-    }
-    case 'decrement': {
-      return { count: state.count - 1 }
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
@@ -168,36 +63,136 @@ function useCountDispatch() {
   return context
 }
 
-function useCount() {
-  return [useCountState(), useCountDispatch()]
+// function useCount() {
+//   return [useCountState(), useCountDispatch()]
+// }
+
+function ContextCounter() {
+  const state = useCountState()
+  return <Counter name="ContextCounter" value={state.count} />
 }
+function ContextController() {
+  const dispatch = useCountDispatch()
+  const up = () => dispatch({ type: 'up' })
+  return <Controller up={up} />
+}
+// context END
 
-function Counter3() {
-  const [state, dispatch] = useCount()
-
-  return (
-    <div className="flex space-x-2">
-      <button onClick={() => dispatch({ type: 'increment' })}>+1</button>
-      <div>{state.count}</div>
-    </div>
+// zustand START
+// Log every time state is changed
+const log = (config) => (set, get, api) =>
+  config(
+    (args) => {
+      console.log('  applying', args)
+      set(args)
+      console.log('  new state', get())
+    },
+    get,
+    api
   )
+
+// Turn the set method into an immer proxy
+const immer = (config) => (set, get, api) =>
+  config((fn) => set(produce(fn)), get, api)
+
+const createStore = pipe(log, immer, create)
+
+const defaultState = {
+  count: {
+    one: 0,
+    two: 0,
+  },
 }
+
+const useStore = createStore((set) => ({
+  ...defaultState,
+  up1: () =>
+    set((state) => {
+      state.count.one += 1
+    }),
+  up2: () =>
+    set((state) => {
+      state.count.two += 1
+    }),
+}))
+
+function ZustandCounter1() {
+  const count = useStore((state) => state.count.one)
+  return <Counter name="ZustandCounter1" value={count} />
+}
+
+function ZustandController1() {
+  const up = useStore((state) => state.up1)
+  return <Controller up={up} />
+}
+
+function ZustandCounter2() {
+  const count = useStore((state) => state.count.two)
+  return <Counter name="ZustandCounter2" value={count} />
+}
+
+function ZustandController2() {
+  const up = useStore((state) => state.up2)
+  return <Controller up={up} />
+}
+// zustand END
+
+// jotai START
+const countAtom = atom(0)
+
+function JotaiCounter() {
+  const [value] = useAtom(countAtom)
+  return <Counter name="JotaiCounter" value={value} />
+}
+
+function JotaiController() {
+  const [, set] = useAtom(countAtom)
+  const up = () => set((c) => c + 1)
+  return <Controller up={up} />
+}
+// jotai END
+
+// valtio START
+const state = proxy({ count: 0 })
+
+function ValtioCounter() {
+  const snapshot = useProxy(state)
+  return <Counter name="ValtioCounter" value={snapshot.count} />
+}
+
+function ValtioController() {
+  const up = () => void ++state.count
+  return <Controller up={up} />
+}
+// valtio END
 
 function Right() {
   return (
     <div className="space-y-4">
-      <div>
-        <BearCounter />
-        <BearList />
-        <Controls />
+      <div className="flex space-x-2">
+        <CountProvider>
+          <ContextCounter />
+          <ContextController />
+        </CountProvider>
       </div>
-      <Provider>
-        <Counter />
-      </Provider>
-      <Counter2 />
-      <CountProvider>
-        <Counter3 />
-      </CountProvider>
+      <div className="flex space-x-2">
+        <ZustandCounter1 />
+        <ZustandController1 />
+      </div>
+      <div className="flex space-x-2">
+        <ZustandCounter2 />
+        <ZustandController2 />
+      </div>
+      <div className="flex space-x-2">
+        <Provider>
+          <JotaiCounter />
+          <JotaiController />
+        </Provider>
+      </div>
+      <div className="flex space-x-2">
+        <ValtioCounter />
+        <ValtioController />
+      </div>
     </div>
   )
 }
