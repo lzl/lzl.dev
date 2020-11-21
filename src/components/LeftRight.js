@@ -10,7 +10,7 @@ export default function LeftRight({ left, right, full = false }) {
         <Link href="/">
           <a className="flex p-4 space-x-3 border-b border-gray-200">
             <img src="/lzl.png" alt="lzl" className="w-6 h-6 rounded" />
-            <h1 className="font-bold">LZL · 李尊龙</h1>
+            <h1 className="font-mono font-bold">LZL · 李尊龙</h1>
           </a>
         </Link>
         <aside className="flex-1 hidden p-4 overflow-y-auto sm:block">
