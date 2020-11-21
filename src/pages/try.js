@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import create from 'zustand'
 import { Provider, atom, useAtom } from 'jotai'
+import { proxy, useProxy } from 'valtio'
 import produce from 'immer'
 import pipe from 'ramda/src/pipe'
 import { useForm } from 'react-hook-form'
@@ -112,14 +113,32 @@ function Counter() {
   )
 }
 
+const state = proxy({ count: 0, text: 'hello' })
+
+function Counter2() {
+  const snapshot = useProxy(state)
+  // Rule of thumb: read from snapshots, mutate the source
+  // The component renders when the snapshot-reads change
+  return (
+    <div className="flex space-x-2">
+      <button onClick={() => ++state.count}>+1</button>
+      <div>{snapshot.count}</div>
+    </div>
+  )
+}
+
 function Right() {
   return (
     <Provider>
-      <BearCounter />
-      <BearList />
-      <Controls />
-      <hr className="my-4" />
-      <Counter />
+      <div className="space-y-4">
+        <div>
+          <BearCounter />
+          <BearList />
+          <Controls />
+        </div>
+        <Counter />
+        <Counter2 />
+      </div>
     </Provider>
   )
 }
