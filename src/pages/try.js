@@ -1,27 +1,109 @@
+import { useEffect } from 'react'
 import create from 'zustand'
+import produce from 'immer'
+import pipe from 'ramda/src/pipe'
+import { useForm } from 'react-hook-form'
 
 import LeftRight from '@/components/LeftRight'
 
-const useStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
+// Log every time state is changed
+const log = (config) => (set, get, api) =>
+  config(
+    (args) => {
+      console.log('  applying', args)
+      set(args)
+      console.log('  new state', get())
+    },
+    get,
+    api
+  )
+
+// Turn the set method into an immer proxy
+const immer = (config) => (set, get, api) =>
+  config((fn) => set(produce(fn)), get, api)
+
+const createStore = pipe(log, immer, create)
+
+const defaultState = {
+  bears: {
+    total: 0,
+    list: [],
+  },
+}
+
+const useStore = createStore((set) => ({
+  ...defaultState,
+  add: (bear) =>
+    set((state) => {
+      state.bears.list.push(bear)
+      state.bears.total += 1
+    }),
+  reset: () =>
+    set((state) => {
+      state.bears = defaultState.bears
+    }),
 }))
 
 function BearCounter() {
-  const bears = useStore((state) => state.bears)
-  return <p>{bears} around here ...</p>
+  const total = useStore((state) => state.bears.total)
+  return <p>{total} around here ...</p>
+}
+
+function BearList() {
+  const total = useStore((state) => state.bears.total)
+  const list = useStore((state) => state.bears.list)
+
+  if (total > 0) {
+    return (
+      <ul className="flex space-x-2">
+        {list.map((b, i) => (
+          <li key={i}>{b}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  return null
 }
 
 function Controls() {
-  const increasePopulation = useStore((state) => state.increasePopulation)
-  return <button onClick={increasePopulation}>one up</button>
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { isSubmitSuccessful },
+  } = useForm()
+  const add = useStore((state) => state.add)
+  const handleReset = useStore((state) => state.reset)
+
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      console.log('reset')
+      reset()
+    }
+  }, [isSubmitSuccessful, reset])
+
+  const onSubmit = (data) => {
+    console.log('onSubmit:', data)
+    if (data.bear) add(data.bear)
+  }
+
+  return (
+    <div className="mt-2 space-y-2">
+      <form className="space-x-2" onSubmit={handleSubmit(onSubmit)}>
+        <input ref={register} name="bear" type="text" />
+        <button type="submit">submit</button>
+        <button onClick={handleReset}>reset</button>
+      </form>
+    </div>
+  )
 }
 
 function Right() {
   return (
     <>
       <BearCounter />
+      <BearList />
       <Controls />
     </>
   )
