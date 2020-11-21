@@ -13,6 +13,7 @@
     "clsx": "^1.1.1",
     "cookie": "^0.4.1",
     "faunadb": "^4.0.0",
+    "jotai": "^0.11.1",
     "namor": "^2.0.2",
     "next": "10.0.2",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -24,6 +25,7 @@
     "react-query-devtools": "^2.6.3",
     "react-table": "^7.6.2",
     "tailwindcss": "^2.0.1",
+    "valtio": "^0.4.0",
     "zustand": "^3.2.0"
   },
   "devDependencies": {
