@@ -79,11 +79,9 @@ function useCountDispatch() {
   }
   return context
 }
-
 // function useCount() {
 //   return [useCountState(), useCountDispatch()]
 // }
-
 function ContextCounter() {
   const state = useCountState()
   return <Counter name="ContextCounter" value={state.count} />
@@ -117,7 +115,6 @@ function ReduxCounter() {
   const value = useSelector((state) => state.counter.value)
   return <Counter name="ReduxCounter" value={value} />
 }
-
 function ReduxController() {
   const dispatch = useDispatch()
   const up = () => dispatch(reduxUp())
@@ -137,20 +134,16 @@ const log = (config) => (set, get, api) =>
     get,
     api
   )
-
 // Turn the set method into an immer proxy
 const immer = (config) => (set, get, api) =>
   config((fn) => set(produce(fn)), get, api)
-
 const createStore = pipe(log, immer, create)
-
 const defaultState = {
   count: {
     one: 0,
     two: 0,
   },
 }
-
 const useStore = createStore((set) => ({
   ...defaultState,
   up1: () =>
@@ -162,22 +155,18 @@ const useStore = createStore((set) => ({
       state.count.two += 1
     }),
 }))
-
 function ZustandCounter1() {
   const count = useStore((state) => state.count.one)
   return <Counter name="ZustandCounter1" value={count} />
 }
-
 function ZustandController1() {
   const up = useStore((state) => state.up1)
   return <Controller up={up} />
 }
-
 function ZustandCounter2() {
   const count = useStore((state) => state.count.two)
   return <Counter name="ZustandCounter2" value={count} />
 }
-
 function ZustandController2() {
   const up = useStore((state) => state.up2)
   return <Controller up={up} />
@@ -186,12 +175,10 @@ function ZustandController2() {
 
 // jotai START
 const countAtom = atom(0)
-
 function JotaiCounter() {
   const [value] = useAtom(countAtom)
   return <Counter name="JotaiCounter" value={value} />
 }
-
 function JotaiController() {
   const [, set] = useAtom(countAtom)
   const up = () => set((c) => c + 1)
@@ -200,15 +187,13 @@ function JotaiController() {
 // jotai END
 
 // valtio START
-const state = proxy({ count: 0 })
-
+const valtioState = proxy({ count: 0 })
 function ValtioCounter() {
-  const snapshot = useProxy(state)
+  const snapshot = useProxy(valtioState)
   return <Counter name="ValtioCounter" value={snapshot.count} />
 }
-
 function ValtioController() {
-  const up = () => void ++state.count
+  const up = () => void ++valtioState.count
   return <Controller up={up} />
 }
 // valtio END
