@@ -6,16 +6,24 @@ const defaultMenu = [
     url: 'https://google.com/ncr',
   },
   {
-    title: 'Gmail',
-    url: 'https://google.com/gmail',
+    title: 'JavaScript',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
   },
   {
-    title: 'Roam Research',
-    url: 'https://roamresearch.com/',
+    title: 'React',
+    url: 'https://reactjs.org/',
   },
   {
-    title: 'Standard Notes',
-    url: 'https://standardnotes.org/',
+    title: 'Next.js',
+    url: 'https://nextjs.org/',
+  },
+  {
+    title: 'Tailwind CSS',
+    url: 'https://tailwindcss.com/',
+  },
+  {
+    title: 'React Query',
+    url: 'https://github.com/tannerlinsley/react-query',
   },
   {
     title: 'GitHub',
