@@ -1,6 +1,12 @@
 import * as React from 'react'
+import { configureStore, createSlice } from '@reduxjs/toolkit'
+import {
+  Provider as ReduxProvider,
+  useSelector,
+  useDispatch,
+} from 'react-redux'
 import create from 'zustand'
-import { Provider, atom, useAtom } from 'jotai'
+import { Provider as JotaiProvider, atom, useAtom } from 'jotai'
 import { proxy, useProxy } from 'valtio'
 import produce from 'immer'
 import pipe from 'ramda/src/pipe'
@@ -88,6 +94,36 @@ function ContextController() {
   return <Controller up={up} />
 }
 // context END
+
+// redux START
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: {
+    value: 0,
+  },
+  reducers: {
+    up: (state) => {
+      ++state.value
+    },
+  },
+})
+const { up: reduxUp } = counterSlice.actions
+const reduxStore = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+  },
+})
+function ReduxCounter() {
+  const value = useSelector((state) => state.counter.value)
+  return <Counter name="ReduxCounter" value={value} />
+}
+
+function ReduxController() {
+  const dispatch = useDispatch()
+  const up = () => dispatch(reduxUp())
+  return <Controller up={up} />
+}
+// redux END
 
 // zustand START
 // Log every time state is changed
@@ -187,6 +223,12 @@ function Right() {
         </CountProvider>
       </div>
       <div className="flex space-x-2">
+        <ReduxProvider store={reduxStore}>
+          <ReduxCounter />
+          <ReduxController />
+        </ReduxProvider>
+      </div>
+      <div className="flex space-x-2">
         <ZustandCounter1 />
         <ZustandController1 />
       </div>
@@ -195,10 +237,10 @@ function Right() {
         <ZustandController2 />
       </div>
       <div className="flex space-x-2">
-        <Provider>
+        <JotaiProvider>
           <JotaiCounter />
           <JotaiController />
-        </Provider>
+        </JotaiProvider>
       </div>
       <div className="flex space-x-2">
         <ValtioCounter />
