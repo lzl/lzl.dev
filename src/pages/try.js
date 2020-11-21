@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import create from 'zustand'
+import { Provider, atom, useAtom } from 'jotai'
 import produce from 'immer'
 import pipe from 'ramda/src/pipe'
 import { useForm } from 'react-hook-form'
@@ -99,13 +100,27 @@ function Controls() {
   )
 }
 
+const countAtom = atom(0)
+
+function Counter() {
+  const [count, setCount] = useAtom(countAtom)
+  return (
+    <div className="flex space-x-2">
+      <button onClick={() => setCount((c) => c + 1)}>up</button>
+      <div>{count}</div>
+    </div>
+  )
+}
+
 function Right() {
   return (
-    <>
+    <Provider>
       <BearCounter />
       <BearList />
       <Controls />
-    </>
+      <hr className="my-4" />
+      <Counter />
+    </Provider>
   )
 }
 
