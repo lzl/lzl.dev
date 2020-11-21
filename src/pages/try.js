@@ -28,16 +28,27 @@ function Controller({ up }) {
 const CountStateContext = React.createContext()
 const CountDispatchContext = React.createContext()
 
-function countReducer(state, action) {
+// function countReducer(state, action) {
+//   switch (action.type) {
+//     case 'up': {
+//       return { count: state.count + 1 }
+//     }
+//     default: {
+//       throw new Error(`Unhandled action type: ${action.type}`)
+//     }
+//   }
+// }
+const countReducer = produce((draft, action) => {
   switch (action.type) {
     case 'up': {
-      return { count: state.count + 1 }
+      ++draft.count
+      break
     }
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }
   }
-}
+})
 function CountProvider({ children }) {
   const [state, dispatch] = React.useReducer(countReducer, { count: 0 })
   return (
