@@ -5,7 +5,7 @@ import { userClient, FAUNA_SECRET_COOKIE } from '@/utils/fauna-auth'
 
 export const profileApi = async (faunaSecret) => {
   return await userClient(faunaSecret).query(
-    q.Select(['data'], q.Get(q.Identity()))
+    q.Select(['data'], q.Get(q.CurrentIdentity()))
   )
 }
 
