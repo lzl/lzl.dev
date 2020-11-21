@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import * as React from 'react'
 import create from 'zustand'
 import { Provider, atom, useAtom } from 'jotai'
 import { proxy, useProxy } from 'valtio'
@@ -78,7 +78,7 @@ function Controls() {
   const add = useStore((state) => state.add)
   const handleReset = useStore((state) => state.reset)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isSubmitSuccessful) {
       console.log('reset')
       reset()
@@ -127,19 +127,78 @@ function Counter2() {
   )
 }
 
+const CountStateContext = React.createContext()
+const CountDispatchContext = React.createContext()
+
+function countReducer(state, action) {
+  switch (action.type) {
+    case 'increment': {
+      return { count: state.count + 1 }
+    }
+    case 'decrement': {
+      return { count: state.count - 1 }
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`)
+    }
+  }
+}
+function CountProvider({ children }) {
+  const [state, dispatch] = React.useReducer(countReducer, { count: 0 })
+  return (
+    <CountStateContext.Provider value={state}>
+      <CountDispatchContext.Provider value={dispatch}>
+        {children}
+      </CountDispatchContext.Provider>
+    </CountStateContext.Provider>
+  )
+}
+function useCountState() {
+  const context = React.useContext(CountStateContext)
+  if (context === undefined) {
+    throw new Error('useCountState must be used within a CountProvider')
+  }
+  return context
+}
+function useCountDispatch() {
+  const context = React.useContext(CountDispatchContext)
+  if (context === undefined) {
+    throw new Error('useCountDispatch must be used within a CountProvider')
+  }
+  return context
+}
+
+function useCount() {
+  return [useCountState(), useCountDispatch()]
+}
+
+function Counter3() {
+  const [state, dispatch] = useCount()
+
+  return (
+    <div className="flex space-x-2">
+      <button onClick={() => dispatch({ type: 'increment' })}>+1</button>
+      <div>{state.count}</div>
+    </div>
+  )
+}
+
 function Right() {
   return (
-    <Provider>
-      <div className="space-y-4">
-        <div>
-          <BearCounter />
-          <BearList />
-          <Controls />
-        </div>
-        <Counter />
-        <Counter2 />
+    <div className="space-y-4">
+      <div>
+        <BearCounter />
+        <BearList />
+        <Controls />
       </div>
-    </Provider>
+      <Provider>
+        <Counter />
+      </Provider>
+      <Counter2 />
+      <CountProvider>
+        <Counter3 />
+      </CountProvider>
+    </div>
   )
 }
 
