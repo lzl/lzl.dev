@@ -12,6 +12,7 @@ import produce from 'immer'
 import pipe from 'ramda/src/pipe'
 
 import LeftRight from '@/components/LeftRight'
+import Menu, { profileMenu } from '@/components/Menu'
 
 function Counter({ name, value }) {
   return (
@@ -235,6 +236,6 @@ function Right() {
   )
 }
 
-export default function Try() {
-  return <LeftRight right={<Right />} full />
+export default function State() {
+  return <LeftRight left={<Menu data={profileMenu} />} right={<Right />} full />
 }

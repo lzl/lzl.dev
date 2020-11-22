@@ -56,6 +56,10 @@ export const profileMenu = [
     url: '/profile',
   },
   {
+    title: 'State',
+    url: '/state',
+  },
+  {
     title: 'Table',
     url: '/table',
   },
