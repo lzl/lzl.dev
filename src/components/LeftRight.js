@@ -18,9 +18,7 @@ export default function LeftRight({ left, right, full = false }) {
         </aside>
       </div>
       <div className="flex-1 overflow-y-auto">
-        <article
-          className={clsx('p-4', full ? 'w-full' : 'prose-lg sm:max-w-512')}
-        >
+        <article className={clsx('p-4', full ? 'w-full' : 'sm:max-w-512')}>
           {right}
         </article>
         <aside className="block p-4 border-t border-gray-200 sm:hidden">
