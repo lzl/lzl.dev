@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import clsx from 'clsx'
 import { Menu, Transition } from '@headlessui/react'
 
@@ -6,7 +5,9 @@ export function Button({
   children,
   variant = 'outline',
   size = 'md',
-  fullWidth = false,
+  isFullWidth = false,
+  leftIcon,
+  rightIcon,
 }) {
   return (
     <button
@@ -22,11 +23,31 @@ export function Button({
           'px-2 py-1 text-xs': size === 'sm',
           'px-4 py-2 text-base': size === 'md',
           'px-6 py-3 text-base': size === 'lg',
-          'block w-full justify-center': fullWidth,
+          'block w-full justify-center': isFullWidth,
         }
       )}
     >
+      {leftIcon && (
+        <span
+          className={clsx({
+            '-ml-0.5 mr-1 w-4 h-4': size === 'sm',
+            '-ml-1 mr-2 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
+          })}
+        >
+          {leftIcon}
+        </span>
+      )}
       {children}
+      {rightIcon && (
+        <span
+          className={clsx({
+            'ml-1 -mr-0.5 w-4 h-4': size === 'sm',
+            'ml-2 -mr-1 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
+          })}
+        >
+          {rightIcon}
+        </span>
+      )}
     </button>
   )
 }
