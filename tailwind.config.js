@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: ['./src/**/*.html', './src/**/*.js', './src/**/*.jsx'],
@@ -13,6 +14,9 @@ module.exports = {
       },
       maxWidth: {
         512: '512px',
+      },
+      colors: {
+        lime: colors.lime,
       },
     },
   },
