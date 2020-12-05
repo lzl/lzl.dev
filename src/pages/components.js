@@ -21,6 +21,9 @@ function Right() {
         </Button>
         <Button>保存</Button>
         <Button size="lg">提交</Button>
+        <Button size="lg" color="red">
+          提交
+        </Button>
       </div>
       <div className="flex items-end space-x-2">
         <Button variant="solid" size="sm">
@@ -28,6 +31,21 @@ function Right() {
         </Button>
         <Button variant="solid">回到首页</Button>
         <Button variant="solid" size="lg">
+          提交
+        </Button>
+        <Button variant="solid" size="lg" color="red">
+          删除
+        </Button>
+      </div>
+      <div className="flex items-end space-x-2">
+        <Button variant="simple" size="sm">
+          发送提醒
+        </Button>
+        <Button variant="simple">回到首页</Button>
+        <Button variant="simple" size="lg">
+          提交
+        </Button>
+        <Button variant="simple" size="lg" color="red">
           提交
         </Button>
       </div>
@@ -54,7 +72,13 @@ function Right() {
         <Button variant="solid" rightIcon={<ChevronRightIcon />}>
           回到首页
         </Button>
-        <Button variant="solid" size="lg" rightIcon={<ChevronRightIcon />}>
+        <Button
+          variant="solid"
+          size="lg"
+          rightIcon={<ChevronRightIcon />}
+          isLoading={isLoading}
+          onClick={handleClick}
+        >
           提交
         </Button>
       </div>
@@ -70,6 +94,7 @@ function Right() {
           size="lg"
           isLoading
           rightIcon={<ChevronRightIcon />}
+          color="red"
         >
           提交
         </Button>

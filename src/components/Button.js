@@ -5,6 +5,7 @@ export function Button({
   children,
   variant = 'outline',
   size = 'md',
+  color = 'default',
   isFullWidth = false,
   leftIcon,
   rightIcon,
@@ -15,12 +16,28 @@ export function Button({
   return (
     <button
       className={clsx(
-        'inline-flex items-center font-medium shadow-sm rounded focus:outline-none',
+        'inline-flex items-center font-medium rounded focus:outline-none',
         {
-          'text-gray-700 border border-gray-300 bg-white hover:bg-gray-50 focus:ring focus:ring-gray-200':
-            variant === 'outline',
-          'text-white border border-transparent bg-indigo-600 hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500':
+          'border bg-white shadow-sm focus:ring': variant === 'outline',
+          'text-white border border-transparent shadow-sm focus:ring-2 focus:ring-offset-2':
             variant === 'solid',
+          'border border-transparent bg-white focus:ring': variant === 'simple',
+        },
+        variant === 'outline' && {
+          'text-gray-700 border-gray-300 hover:bg-gray-50 focus:ring-gray-200':
+            color === 'default',
+          'text-red-700 border-red-700 hover:bg-red-50 focus:border-red-300 focus:ring-red-200':
+            color === 'red',
+        },
+        variant === 'solid' && {
+          'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500':
+            color === 'default',
+          'bg-red-600 hover:bg-red-700 focus:ring-red-500': color === 'red',
+        },
+        variant === 'simple' && {
+          'text-gray-700 hover:bg-gray-50 focus:ring-gray-200':
+            color === 'default',
+          'text-red-700 hover:bg-red-50 focus:ring-red-200': color === 'red',
         },
         {
           'px-2 py-1 text-xs': size === 'sm',
