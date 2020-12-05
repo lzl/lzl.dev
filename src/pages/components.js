@@ -7,7 +7,9 @@ function Right() {
   return (
     <div className="space-y-4">
       <div className="flex items-end space-x-2">
-        <Button size="sm">发送提醒</Button>
+        <Button size="sm" onClick={() => console.log('发送提醒')}>
+          发送提醒
+        </Button>
         <Button>保存</Button>
         <Button size="lg">提交</Button>
       </div>
@@ -43,7 +45,7 @@ function Right() {
         </Button>
       </div>
       <div className="flex items-end space-x-2">
-        <Button size="sm" isLoading>
+        <Button size="sm" isLoading onClick={() => console.log('发送提醒')}>
           发送提醒
         </Button>
         <Button variant="solid" isLoading>
@@ -53,6 +55,22 @@ function Right() {
           variant="solid"
           size="lg"
           isLoading
+          rightIcon={<ChevronRightIcon />}
+        >
+          提交
+        </Button>
+      </div>
+      <div className="flex items-end space-x-2">
+        <Button size="sm" isDisabled onClick={() => console.log('发送提醒')}>
+          发送提醒
+        </Button>
+        <Button variant="solid" isDisabled>
+          回到首页
+        </Button>
+        <Button
+          variant="solid"
+          size="lg"
+          isDisabled
           rightIcon={<ChevronRightIcon />}
         >
           提交

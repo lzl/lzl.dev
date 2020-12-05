@@ -9,6 +9,8 @@ export function Button({
   leftIcon,
   rightIcon,
   isLoading = false,
+  isDisabled = false,
+  ...rest
 }) {
   return (
     <button
@@ -25,8 +27,14 @@ export function Button({
           'px-4 py-2 text-base': size === 'md',
           'px-6 py-3 text-base': size === 'lg',
           'block w-full justify-center': isFullWidth,
+        },
+        {
+          'cursor-not-allowed opacity-50': isDisabled,
+          'cursor-auto': isLoading,
         }
       )}
+      disabled={isDisabled || isLoading}
+      {...rest}
     >
       {leftIcon && !isLoading && (
         <span
