@@ -27,6 +27,17 @@ function Right() {
         <Button variant="solid" leftIcon={<HomeIcon />}>
           回到首页
         </Button>
+        <Button variant="solid" size="lg" leftIcon={<HomeIcon />}>
+          提交
+        </Button>
+      </div>
+      <div className="flex items-end space-x-2">
+        <Button size="sm" rightIcon={<ChevronRightIcon />}>
+          发送提醒
+        </Button>
+        <Button variant="solid" rightIcon={<ChevronRightIcon />}>
+          回到首页
+        </Button>
         <Button variant="solid" size="lg" rightIcon={<ChevronRightIcon />}>
           提交
         </Button>
@@ -38,7 +49,12 @@ function Right() {
         <Button variant="solid" isLoading>
           回到首页
         </Button>
-        <Button variant="solid" size="lg" isLoading>
+        <Button
+          variant="solid"
+          size="lg"
+          isLoading
+          rightIcon={<ChevronRightIcon />}
+        >
           提交
         </Button>
       </div>

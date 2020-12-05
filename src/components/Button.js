@@ -31,8 +31,8 @@ export function Button({
       {leftIcon && !isLoading && (
         <span
           className={clsx({
-            '-ml-0.5 mr-1 w-4 h-4': size === 'sm',
-            '-ml-1 mr-2 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
+            '-ml-0.5 mr-2 w-4 h-4': size === 'sm',
+            '-ml-1 mr-3 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
           })}
         >
           {leftIcon}
@@ -41,8 +41,8 @@ export function Button({
       {isLoading && (
         <span
           className={clsx('animate-spin', {
-            '-ml-0.5 mr-1 w-4 h-4': size === 'sm',
-            '-ml-1 mr-2 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
+            '-ml-0.5 mr-2 w-4 h-4': size === 'sm',
+            '-ml-1 mr-3 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
           })}
         >
           <svg
@@ -70,8 +70,8 @@ export function Button({
       {rightIcon && (
         <span
           className={clsx({
-            'ml-1 -mr-0.5 w-4 h-4': size === 'sm',
-            'ml-2 -mr-1 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
+            'ml-2 -mr-0.5 w-4 h-4': size === 'sm',
+            'ml-3 -mr-1 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
           })}
         >
           {rightIcon}
