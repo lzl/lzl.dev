@@ -1,13 +1,22 @@
 import LeftRight from '@/components/LeftRight'
+import { useState } from 'react'
+
 import Menu, { profileMenu } from '@/components/Menu'
 import { Button, ButtonGroup } from '@/components/Button'
 import { ChevronRightIcon, HomeIcon } from '@/components/Icon'
 
 function Right() {
+  const [isLoading, setIsLoading] = useState(false)
+
+  function handleClick() {
+    setIsLoading(true)
+    setTimeout(() => setIsLoading(false), 2000)
+  }
+
   return (
     <div className="space-y-4">
       <div className="flex items-end space-x-2">
-        <Button size="sm" onClick={() => console.log('发送提醒')}>
+        <Button size="sm" isLoading={isLoading} onClick={handleClick}>
           发送提醒
         </Button>
         <Button>保存</Button>
@@ -26,7 +35,12 @@ function Right() {
         <Button size="sm" leftIcon={<HomeIcon />}>
           发送提醒
         </Button>
-        <Button variant="solid" leftIcon={<HomeIcon />}>
+        <Button
+          variant="solid"
+          isLoading={isLoading}
+          leftIcon={<HomeIcon />}
+          onClick={handleClick}
+        >
           回到首页
         </Button>
         <Button variant="solid" size="lg" leftIcon={<HomeIcon />}>
