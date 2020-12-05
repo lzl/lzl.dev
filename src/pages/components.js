@@ -3,7 +3,13 @@ import { useState } from 'react'
 
 import Menu, { profileMenu } from '@/components/Menu'
 import { Button, ButtonGroup } from '@/components/Button'
-import { ChevronRightIcon, HomeIcon } from '@/components/Icon'
+import {
+  BellIcon,
+  ChevronRightIcon,
+  HomeIcon,
+  ShareIcon,
+  TrashIcon,
+} from '@/components/Icon'
 
 function Right() {
   const [isLoading, setIsLoading] = useState(false)
@@ -22,7 +28,7 @@ function Right() {
         <Button>保存</Button>
         <Button size="lg">提交</Button>
         <Button size="lg" color="red">
-          提交
+          删除
         </Button>
       </div>
       <div className="flex items-end space-x-2">
@@ -45,12 +51,12 @@ function Right() {
         <Button variant="simple" size="lg">
           提交
         </Button>
-        <Button variant="simple" size="lg" color="red">
-          提交
+        <Button variant="simple" size="lg" color="red" leftIcon={<TrashIcon />}>
+          删除
         </Button>
       </div>
       <div className="flex items-end space-x-2">
-        <Button size="sm" leftIcon={<HomeIcon />}>
+        <Button size="sm" leftIcon={<BellIcon />}>
           发送提醒
         </Button>
         <Button
@@ -61,8 +67,8 @@ function Right() {
         >
           回到首页
         </Button>
-        <Button variant="solid" size="lg" leftIcon={<HomeIcon />}>
-          提交
+        <Button variant="solid" size="lg" leftIcon={<ShareIcon />}>
+          分享
         </Button>
       </div>
       <div className="flex items-end space-x-2">
@@ -89,14 +95,8 @@ function Right() {
         <Button variant="solid" isLoading>
           回到首页
         </Button>
-        <Button
-          variant="solid"
-          size="lg"
-          isLoading
-          rightIcon={<ChevronRightIcon />}
-          color="red"
-        >
-          提交
+        <Button variant="solid" size="lg" isLoading color="red">
+          删除
         </Button>
       </div>
       <div className="flex items-end space-x-2">
