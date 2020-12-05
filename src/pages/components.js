@@ -31,6 +31,17 @@ function Right() {
           提交
         </Button>
       </div>
+      <div className="flex items-end space-x-2">
+        <Button size="sm" isLoading>
+          发送提醒
+        </Button>
+        <Button variant="solid" isLoading>
+          回到首页
+        </Button>
+        <Button variant="solid" size="lg" isLoading>
+          提交
+        </Button>
+      </div>
       <div className="space-y-2">
         <Button isFullWidth>登录</Button>
         <Button variant="solid" isFullWidth>
