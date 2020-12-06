@@ -10,6 +10,7 @@ import {
   ShareIcon,
   TrashIcon,
 } from '@/components/Icon'
+import { PinInput, PinInputField } from '@/components/Input'
 
 function Panel({ name, open, children }) {
   const [isOpen, setIsOpen] = useState(open)
@@ -36,7 +37,7 @@ function Right() {
   }
 
   return (
-    <>
+    <div className="space-y-8">
       <Panel name="按钮 Button" open>
         <div className="flex items-end space-x-2">
           <Button size="sm" isLoading={isLoading} onClick={handleClick}>
@@ -176,7 +177,15 @@ function Right() {
           />
         </div>
       </Panel>
-    </>
+      <Panel name="输入框 Input" open>
+        <PinInput>
+          <PinInputField />
+          <PinInputField />
+          <PinInputField />
+          <PinInputField />
+        </PinInput>
+      </Panel>
+    </div>
   )
 }
 
