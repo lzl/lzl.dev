@@ -11,12 +11,13 @@ import {
   TrashIcon,
 } from '@/components/Icon'
 import { PinInput, PinInputField } from '@/components/Input'
+import { Badge } from '@/components/Badge'
 
-function Panel({ name, open, children }) {
+function Panel({ id, name, open, children }) {
   const [isOpen, setIsOpen] = useState(open)
 
   return (
-    <section className="space-y-4">
+    <section id={id} className="space-y-4">
       <button
         className="text-xl font-bold"
         onClick={() => setIsOpen((o) => !o)}
@@ -38,7 +39,55 @@ function Right() {
 
   return (
     <div className="space-y-8">
-      <Panel name="按钮 Button" open>
+      <Panel id="badge" name="标签 Badge" open>
+        <div className="flex items-end space-x-2">
+          <Badge size="sm">优秀</Badge>
+          <Badge size="sm" hasDot>
+            优秀
+          </Badge>
+          <Badge>优秀</Badge>
+          <Badge hasDot>优秀</Badge>
+        </div>
+        <div className="flex items-end space-x-2">
+          <Badge size="sm" color="indigo">
+            优秀
+          </Badge>
+          <Badge size="sm" color="indigo" hasDot>
+            优秀
+          </Badge>
+          <Badge color="indigo">优秀</Badge>
+          <Badge color="indigo" hasDot>
+            优秀
+          </Badge>
+        </div>
+        <div className="flex items-end space-x-2">
+          <Badge size="sm" rounded="sm">
+            优秀
+          </Badge>
+          <Badge size="sm" hasDot rounded="sm">
+            优秀
+          </Badge>
+          <Badge rounded="sm">优秀</Badge>
+          <Badge hasDot rounded="sm">
+            优秀
+          </Badge>
+        </div>
+        <div className="flex items-end space-x-2">
+          <Badge size="sm" rounded="sm" canDelete>
+            优秀
+          </Badge>
+          <Badge size="sm" hasDot rounded="sm" canDelete>
+            优秀
+          </Badge>
+          <Badge rounded="sm" canDelete>
+            优秀
+          </Badge>
+          <Badge hasDot rounded="sm" canDelete>
+            优秀
+          </Badge>
+        </div>
+      </Panel>
+      <Panel id="button" name="按钮 Button" open>
         <div className="flex items-end space-x-2">
           <Button size="sm" isLoading={isLoading} onClick={handleClick}>
             发送提醒
@@ -177,7 +226,7 @@ function Right() {
           />
         </div>
       </Panel>
-      <Panel name="输入框 Input" open>
+      <Panel id="input" name="输入框 Input" open>
         <PinInput>
           <PinInputField />
           <PinInputField />
