@@ -12,6 +12,7 @@ import {
 } from '@/components/Icon'
 import { PinInput, PinInputField } from '@/components/Input'
 import { Badge } from '@/components/Badge'
+import { Select } from '@/components/Select'
 
 function Panel({ id, name, open, children }) {
   const [isOpen, setIsOpen] = useState(open)
@@ -39,6 +40,9 @@ function Right() {
 
   return (
     <div className="space-y-8">
+      <Panel id="select" name="选择框 Select" open>
+        <Select />
+      </Panel>
       <Panel id="badge" name="标签 Badge" open>
         <div className="flex items-end space-x-2">
           <Badge size="sm">优秀</Badge>
