@@ -6,6 +6,8 @@ import Menu, { profileMenu } from '@/components/Menu'
 import useAuth from '@/hooks/useAuth'
 import useProfile from '@/hooks/useProfile'
 import useLogout from '@/hooks/useLogout'
+import { Button } from '@/components/Button'
+import { LogoutIcon } from '@/components/Icon'
 
 function Right() {
   useAuth()
@@ -27,8 +29,17 @@ function Right() {
   return (
     <div className="space-y-2">
       <div>Email: {data.email}</div>
-
-      <div className="inline-block rounded-md shadow-sm ">
+      <div>
+        <Button
+          size="sm"
+          leftIcon={<LogoutIcon />}
+          isLoading={isLogoutLoading}
+          onClick={logout}
+        >
+          登出
+        </Button>
+      </div>
+      <div className="inline-block rounded-md shadow-sm">
         <button
           type="button"
           onClick={logout}
