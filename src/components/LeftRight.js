@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import clsx from 'clsx'
 
+import { cx } from '@/utils/helpers'
 import Menu from '@/components/Menu'
 
 export default function LeftRight({ left, right, full = false }) {
@@ -18,7 +18,7 @@ export default function LeftRight({ left, right, full = false }) {
         </aside>
       </div>
       <div className="flex-1 overflow-y-auto">
-        <article className={clsx('p-4', full ? 'w-full' : 'sm:max-w-512')}>
+        <article className={cx('p-4', full ? 'w-full' : 'sm:max-w-512')}>
           {right}
         </article>
         <aside className="block p-4 border-t border-gray-200 sm:hidden">

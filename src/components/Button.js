@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { cx } from '@/utils/helpers'
 import { Menu, Transition } from '@headlessui/react'
 
 export function Button({
@@ -15,7 +15,7 @@ export function Button({
 }) {
   return (
     <button
-      className={clsx(
+      className={cx(
         'inline-flex items-center font-medium rounded focus:outline-none',
         {
           'border bg-white shadow-sm focus:ring': variant === 'outline',
@@ -55,7 +55,7 @@ export function Button({
     >
       {leftIcon && !isLoading && (
         <span
-          className={clsx({
+          className={cx({
             '-ml-0.5 mr-2 w-4 h-4': size === 'sm',
             '-ml-1 mr-3 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
           })}
@@ -65,7 +65,7 @@ export function Button({
       )}
       {isLoading && (
         <span
-          className={clsx('animate-spin', {
+          className={cx('animate-spin', {
             '-ml-0.5 mr-2 w-4 h-4': size === 'sm',
             '-ml-1 mr-3 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
           })}
@@ -94,7 +94,7 @@ export function Button({
       {children}
       {rightIcon && (
         <span
-          className={clsx({
+          className={cx({
             'ml-2 -mr-0.5 w-4 h-4': size === 'sm',
             'ml-3 -mr-1 w-5 h-5': ['md', 'lg'].indexOf(size) > -1,
           })}
@@ -118,7 +118,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
             <>
               <button
                 type="button"
-                className={clsx(
+                className={cx(
                   'relative inline-flex items-center font-medium text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
                   {
                     'px-4 py-2 text-sm': size === 'md',
@@ -132,7 +132,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
               <span className="relative block -ml-px">
                 <Menu.Button
                   type="button"
-                  className={clsx(
+                  className={cx(
                     'relative inline-flex items-center font-medium text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
                     {
                       'px-2 py-2 text-sm': size === 'md',
@@ -167,7 +167,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
                 >
                   <Menu.Items
                     static
-                    className={clsx(
+                    className={cx(
                       'absolute right-0 mt-2 w-56 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none'
                     )}
                   >
@@ -176,7 +176,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
                         <Menu.Item key={idx}>
                           {({ active }) => (
                             <button
-                              className={clsx(
+                              className={cx(
                                 'group flex w-full px-4 py-2 text-sm text-left',
                                 {
                                   'bg-gray-100 text-gray-900': active,
@@ -187,7 +187,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
                             >
                               {item.leftIcon && (
                                 <span
-                                  className={clsx({
+                                  className={cx({
                                     'mr-3 w-5 h-5 text-gray-400 group-hover:text-gray-500':
                                       ['md', 'lg'].indexOf(size) > -1,
                                   })}
@@ -207,7 +207,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
                         {({ active }) => (
                           <a
                             href="#sign-out"
-                            className={clsx(
+                            className={cx(
                               'flex justify-between w-full px-4 py-2 text-sm text-left',
                               {
                                 'bg-gray-100 text-gray-900': active,
@@ -236,7 +236,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
         <button
           key={idx}
           type="button"
-          className={clsx(
+          className={cx(
             'relative inline-flex items-center font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500',
             {
               'rounded-l-md': idx === 0,
