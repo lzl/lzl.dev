@@ -168,11 +168,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
                   <Menu.Items
                     static
                     className={clsx(
-                      'absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none',
-                      {
-                        'w-40': size === 'md',
-                        'w-48': size === 'lg',
-                      }
+                      'absolute right-0 mt-2 w-56 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none'
                     )}
                   >
                     <div className="py-1">
@@ -181,7 +177,7 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
                           {({ active }) => (
                             <button
                               className={clsx(
-                                'flex justify-between w-full px-4 py-2 text-sm text-left',
+                                'group flex w-full px-4 py-2 text-sm text-left',
                                 {
                                   'bg-gray-100 text-gray-900': active,
                                   'text-gray-700': !active,
@@ -189,6 +185,16 @@ export function ButtonGroup({ items = [], size = 'md', dropdown = false }) {
                               )}
                               onClick={item.onClick}
                             >
+                              {item.leftIcon && (
+                                <span
+                                  className={clsx({
+                                    'mr-3 w-5 h-5 text-gray-400 group-hover:text-gray-500':
+                                      ['md', 'lg'].indexOf(size) > -1,
+                                  })}
+                                >
+                                  {item.leftIcon}
+                                </span>
+                              )}
                               {item.name}
                             </button>
                           )}

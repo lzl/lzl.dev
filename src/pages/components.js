@@ -135,12 +135,20 @@ function Right() {
       <div className="flex items-end justify-center space-x-2">
         <ButtonGroup
           dropdown
-          items={[{ name: '开发中' }, { name: '提测中' }, { name: '已部署' }]}
+          items={[
+            { name: '开发中' },
+            { name: '提测中', leftIcon: <ShareIcon variant="solid" /> },
+            { name: '已部署' },
+          ]}
         />
         <ButtonGroup
           dropdown
           size="lg"
-          items={[{ name: '开发中' }, { name: '提测中' }, { name: '已部署' }]}
+          items={[
+            { name: '开发中' },
+            { name: '提测中', leftIcon: <ShareIcon variant="solid" /> },
+            { name: '已部署' },
+          ]}
         />
       </div>
     </div>
