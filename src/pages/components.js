@@ -30,8 +30,22 @@ function Panel({ id, name, open, children }) {
   )
 }
 
+const people = [
+  'Wade Cooper',
+  'Arlene Mccoy',
+  'Devon Webb',
+  'Tom Cook',
+  'Tanya Fox',
+  'Hellen Schmidt',
+  'Caroline Schultz Caroline Schultz Caroline Schultz',
+  'Mason Heaney',
+  'Claudie Smitham',
+  'Emil Schaefer',
+]
+
 function Right() {
   const [isLoading, setIsLoading] = useState(false)
+  const [selectedPerson, setSelectedPerson] = useState(people[0])
 
   function handleClick() {
     setIsLoading(true)
@@ -40,9 +54,6 @@ function Right() {
 
   return (
     <div className="space-y-8">
-      <Panel id="select" name="选择框 Select" open>
-        <Select />
-      </Panel>
       <Panel id="badge" name="标签 Badge" open>
         <div className="flex items-end space-x-2">
           <Badge size="sm">优秀</Badge>
@@ -237,6 +248,13 @@ function Right() {
           <PinInputField />
           <PinInputField />
         </PinInput>
+      </Panel>
+      <Panel id="select" name="选择框 Select" open>
+        <Select
+          options={people}
+          value={selectedPerson}
+          onChange={setSelectedPerson}
+        />
       </Panel>
     </div>
   )
