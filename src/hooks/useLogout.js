@@ -1,9 +1,9 @@
-import { useQueryCache, useMutation } from 'react-query'
+import { useQueryClient, useMutation } from 'react-query'
 import { useRouter } from 'next/router'
 
 export default function useLogout() {
   const router = useRouter()
-  const queryCache = useQueryCache()
+  const queryClient = useQueryClient()
 
   return useMutation(
     async () => {
@@ -13,7 +13,7 @@ export default function useLogout() {
     },
     {
       onSuccess: () => {
-        queryCache.removeQueries('profile', { exact: true })
+        queryClient.removeQueries('profile', { exact: true })
       },
     }
   )

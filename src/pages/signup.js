@@ -16,7 +16,7 @@ function Right() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [mutate, { isLoading, error }] = useSignup()
+  const { mutate, isLoading, error } = useSignup()
 
   const handleChangeEmail = useCallback(
     (event) => setEmail(event.target.value),

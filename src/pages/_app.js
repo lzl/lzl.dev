@@ -1,16 +1,16 @@
 import Head from 'next/head'
-import { QueryCache, ReactQueryCacheProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query-devtools'
 import { ChakraProvider } from '@chakra-ui/react'
 
 import '@/styles/index.css'
 
-const queryCache = new QueryCache()
+const queryClient = new QueryClient()
 
 function App({ Component, pageProps }) {
   return (
     <ChakraProvider>
-      <ReactQueryCacheProvider queryCache={queryCache}>
+      <QueryClientProvider client={queryClient}>
         <Head>
           <meta charSet="utf-8" />
           <title>LZL · 李尊龙</title>
@@ -18,7 +18,7 @@ function App({ Component, pageProps }) {
         </Head>
         <Component {...pageProps} />
         <ReactQueryDevtools initialIsOpen />
-      </ReactQueryCacheProvider>
+      </QueryClientProvider>
     </ChakraProvider>
   )
 }

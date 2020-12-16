@@ -14,10 +14,7 @@ function Right() {
 
   const router = useRouter()
   const { isLoading, error, data } = useProfile()
-  const [
-    logout,
-    { isLoading: isLogoutLoading, error: logoutError },
-  ] = useLogout()
+  const { mutate, isLoading: isLogoutLoading, error: logoutError } = useLogout()
 
   useEffect(() => {
     if (error) router.push('/login')
@@ -34,7 +31,7 @@ function Right() {
           size="sm"
           leftIcon={<LogoutIcon />}
           isLoading={isLogoutLoading}
-          onClick={logout}
+          onClick={mutate}
         >
           登出
         </Button>
@@ -42,7 +39,7 @@ function Right() {
       <div className="inline-block rounded-md shadow-sm">
         <button
           type="button"
-          onClick={logout}
+          onClick={mutate}
           disabled={isLogoutLoading}
           className="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out bg-gray-600 border border-transparent rounded-md group hover:bg-gray-500 focus:outline-none focus:shadow-outline-gray focus:border-gray-700 active:bg-gray-700"
         >

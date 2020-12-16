@@ -1,9 +1,9 @@
-import { useQueryCache, useMutation } from 'react-query'
+import { useQueryClient, useMutation } from 'react-query'
 import { useRouter } from 'next/router'
 
 export default function useSignup() {
   const router = useRouter()
-  const queryCache = useQueryCache()
+  const queryClient = useQueryClient()
 
   return useMutation(
     ({ email, password }) => {
@@ -24,7 +24,7 @@ export default function useSignup() {
     },
     {
       onSuccess: (data) => {
-        queryCache.setQueryData('profile', data)
+        queryClient.setQueryData('profile', data)
       },
     }
   )
