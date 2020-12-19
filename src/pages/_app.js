@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query-devtools'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { ChakraProvider } from '@chakra-ui/react'
 
 import '@/styles/index.css'
@@ -17,7 +17,7 @@ function App({ Component, pageProps }) {
           <link rel="shortcut icon" href="/lzl.png" type="image/x-icon" />
         </Head>
         <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ChakraProvider>
   )
