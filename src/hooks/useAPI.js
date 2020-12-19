@@ -1,5 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
+let FBMMS_AUTH_TOKEN = ''
+
+if (process.browser) {
+  FBMMS_AUTH_TOKEN = localStorage.getItem('FBMMS_AUTH_TOKEN')
+}
+
 export function usePosts() {
   return useQuery(['posts'], () =>
     fetch('https://jsonplaceholder.typicode.com/posts').then((res) =>
@@ -30,5 +36,15 @@ export function useCreatePost() {
         queryClient.setQueryData(['posts'], [data, ...oldData])
       },
     }
+  )
+}
+
+export function useUserInfo() {
+  return useQuery(['userInfo'], () =>
+    fetch('https://staging.erbg.ren/api/loginUserInfo', {
+      headers: {
+        Authorization: `Basic ${FBMMS_AUTH_TOKEN}`,
+      },
+    }).then((res) => res.json())
   )
 }
