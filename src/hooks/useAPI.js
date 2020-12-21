@@ -39,12 +39,25 @@ export function useCreatePost() {
   )
 }
 
-export function useUserInfo() {
-  return useQuery(['userInfo'], () =>
+export function useCurrentUserInfo() {
+  return useQuery(['currentUserInfo'], () =>
     fetch('https://staging.erbg.ren/api/loginUserInfo', {
       headers: {
         Authorization: `Basic ${FBMMS_AUTH_TOKEN}`,
       },
+    }).then((res) => res.json())
+  )
+}
+
+export function useApplicationList(data = {}) {
+  return useQuery(['applicationList', data], () =>
+    fetch('https://staging.erbg.ren/api/applicationSession/applications', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Basic ${FBMMS_AUTH_TOKEN}`,
+      },
+      body: JSON.stringify(data),
     }).then((res) => res.json())
   )
 }

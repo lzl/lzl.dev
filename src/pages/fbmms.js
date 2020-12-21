@@ -1,14 +1,27 @@
-import LeftRight from '@/components/LeftRight'
-import Menu, { profileMenu } from '@/components/Menu'
-import { useUserInfo } from '@/hooks/useAPI'
+import { useApplicationList, useCurrentUserInfo } from '@/hooks/useAPI'
 
-function Right() {
-  const { isLoading, error, data } = useUserInfo()
+function RenderApplicationList() {
+  const { isLoading, error, data } = useApplicationList({
+    page: 1,
+    pageSize: 2,
+  })
   if (isLoading) return 'Loading...'
   if (error) return 'An error has occurred: ' + error.message
   return <pre>{JSON.stringify(data, null, 2)}</pre>
 }
 
-export default function PostsPage() {
-  return <LeftRight left={<Menu data={profileMenu} />} right={<Right />} />
+function RenderCurrentUserInfo() {
+  const { isLoading, error, data } = useCurrentUserInfo()
+  if (isLoading) return 'Loading...'
+  if (error) return 'An error has occurred: ' + error.message
+  return <pre>{JSON.stringify(data, null, 2)}</pre>
+}
+
+export default function FBMMSPage() {
+  return (
+    <div className="divide-y-8">
+      <RenderApplicationList />
+      <RenderCurrentUserInfo />
+    </div>
+  )
 }
