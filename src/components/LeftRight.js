@@ -3,9 +3,12 @@ import Link from 'next/link'
 import { cx } from '@/utils/helpers'
 import Menu from '@/components/Menu'
 
-export default function LeftRight({ left, right, full = false }) {
+export default function LeftRight({ left = <Menu />, right, full = false }) {
   return (
-    <div className="flex flex-col h-screen overflow-hidden sm:overflow-visible sm:flex-row">
+    <div
+      key="LeftRight"
+      className="flex flex-col h-screen overflow-hidden sm:overflow-visible sm:flex-row"
+    >
       <div className="flex flex-col sm:border-r sm:border-gray-200 sm:w-350">
         <Link href="/">
           <a className="flex p-4 space-x-3 border-b border-gray-200">
@@ -14,7 +17,7 @@ export default function LeftRight({ left, right, full = false }) {
           </a>
         </Link>
         <aside className="flex-1 hidden p-4 overflow-y-auto sm:block">
-          {left || <Menu />}
+          {left}
         </aside>
       </div>
       <div className="flex-1 overflow-y-auto">
@@ -22,7 +25,7 @@ export default function LeftRight({ left, right, full = false }) {
           {right}
         </article>
         <aside className="block p-4 border-t border-gray-200 sm:hidden">
-          {left || <Menu />}
+          {left}
         </aside>
       </div>
     </div>
