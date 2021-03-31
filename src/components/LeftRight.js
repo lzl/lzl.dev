@@ -5,10 +5,7 @@ import Menu from '@/components/Menu'
 
 export default function LeftRight({ left = <Menu />, right, full = false }) {
   return (
-    <div
-      key="LeftRight"
-      className="flex flex-col h-screen overflow-hidden sm:overflow-visible sm:flex-row"
-    >
+    <div className="flex flex-col h-screen overflow-hidden sm:overflow-visible sm:flex-row">
       <div className="flex flex-col sm:border-r sm:border-gray-200 sm:w-350">
         <Link href="/">
           <a className="flex p-4 space-x-3 border-b border-gray-200">
