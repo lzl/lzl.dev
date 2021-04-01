@@ -24,7 +24,7 @@ function Stars({ owner, repo }) {
   if (error) return 'An error has occurred: ' + error.message
   return (
     <div>
-      {owner}/{repo}: {data.stargazers_count} stars
+      {owner}/{repo}: {data?.stargazers_count} stars
     </div>
   )
 }
