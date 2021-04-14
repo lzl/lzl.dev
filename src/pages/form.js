@@ -1,16 +1,14 @@
 import LeftRight from '@/components/LeftRight'
-import Counter from '@/modules/Counter/Counter'
-import GitHub from '@/modules/GitHub/GitHub'
+import Feedback from '@/modules/Feedback/Feedback'
 
 function Right() {
   return (
     <div className="space-y-4">
-      <Counter />
-      <GitHub />
+      <Feedback />
     </div>
   )
 }
 
-export default function State() {
+export default function Form() {
   return <LeftRight right={<Right />} full />
 }
