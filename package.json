@@ -9,7 +9,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@headlessui/react": "^0.3.2",
+    "@headlessui/react": "^1.0.0",
     "@reduxjs/toolkit": "^1.5.1",
     "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/typography": "^0.4.0",
@@ -21,8 +21,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-fast-compare": "^3.2.0",
-    "react-hook-form": "^7.0.7",
-    "react-query": "^3.13.6",
+    "react-hook-form": "^7.1.1",
+    "react-query": "^3.13.9",
     "react-redux": "^7.2.3",
     "react-table": "^7.6.3",
     "tailwindcss": "^2.1.1"
@@ -31,7 +31,7 @@
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
