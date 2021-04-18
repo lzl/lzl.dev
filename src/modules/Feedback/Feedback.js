@@ -11,7 +11,7 @@ const INPUT_DATA = [
   {
     token: 'age',
     type: 'number',
-    defaultValue: 0,
+    defaultValue: 32,
     required: true,
   },
 ]
@@ -69,7 +69,7 @@ export default function Feedback() {
   }
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col space-y-2" onSubmit={handleSubmit(onSubmit)}>
       {INPUT_DATA.map((value) => (
         <InputSwitcher
           key={value.token}
