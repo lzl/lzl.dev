@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import memoize from 'proxy-memoize'
 
 const slice = createSlice({
   name: 'counter',
@@ -17,3 +18,5 @@ const slice = createSlice({
 
 export const counterActions = slice.actions
 export const counterReducer = slice.reducer
+
+export const getCount = memoize((state) => state.counter.value)
