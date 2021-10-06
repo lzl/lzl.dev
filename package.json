@@ -27,6 +27,7 @@
     "react-query": "^3.24.4",
     "react-redux": "^7.2.5",
     "react-table": "^7.7.0",
+    "react-tracked": "^1.7.4",
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {

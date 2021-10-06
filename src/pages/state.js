@@ -2,6 +2,7 @@ import LeftRight from '@/components/LeftRight'
 import Counter from '@/modules/Counter/Counter'
 // import GitHub from '@/modules/GitHub/GitHub'
 // import StarWars from '@/modules/StarWars/StarWars'
+import TodoList from '@/modules/TodoList/TodoList'
 
 function Right() {
   return (
@@ -9,6 +10,7 @@ function Right() {
       <Counter />
       {/* <GitHub /> */}
       {/* <StarWars /> */}
+      <TodoList />
     </div>
   )
 }
