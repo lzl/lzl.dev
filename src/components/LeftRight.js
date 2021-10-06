@@ -1,5 +1,5 @@
 import Link from 'next/link'
-
+import Image from 'next/image'
 import { cx } from '@/utils/helpers'
 import Menu from '@/components/Menu'
 
@@ -9,7 +9,13 @@ export default function LeftRight({ left = <Menu />, right, full = false }) {
       <div className="flex flex-col sm:border-r sm:border-gray-200 sm:w-350">
         <Link href="/">
           <a className="flex p-4 space-x-3 border-b border-gray-200">
-            <img src="/lzl.png" alt="lzl" className="w-6 h-6 rounded" />
+            <Image
+              src="/lzl.png"
+              alt="lzl"
+              width="24"
+              height="24"
+              className="rounded"
+            />
             <h1 className="font-mono font-bold">LZL · 李尊龙</h1>
           </a>
         </Link>
