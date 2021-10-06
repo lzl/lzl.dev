@@ -12,13 +12,16 @@ const QueryTodo: React.FC = () => {
   }
 
   return (
-    <input
-      placeholder="Query"
-      value={state.query}
-      onChange={setQuery}
-      className="px-1 border"
-    />
+    <div className="flex space-x-2">
+      <input
+        placeholder="Query"
+        value={state.query}
+        onChange={setQuery}
+        className="px-1 border"
+      />
+      <div>{renderCount.current}</div>
+    </div>
   )
 }
 
-export default React.memo(QueryTodo)
+export default QueryTodo

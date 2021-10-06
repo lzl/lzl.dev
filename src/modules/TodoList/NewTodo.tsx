@@ -26,4 +26,4 @@ const NewTodo: React.FC = () => {
   )
 }
 
-export default React.memo(NewTodo)
+export default NewTodo

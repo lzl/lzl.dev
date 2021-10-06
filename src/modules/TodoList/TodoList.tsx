@@ -3,6 +3,7 @@ import { TodoListProvider, useTodoListState } from './store'
 import TodoItem from './TodoItem'
 import NewTodo from './NewTodo'
 import QueryTodo from './QueryTodo'
+
 const TodoListItself: React.FC = () => {
   const state = useTodoListState()
 
