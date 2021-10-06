@@ -16,6 +16,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "clsx": "^1.1.1",
     "immer": "^9.0.6",
+    "ioredis": "^4.27.10",
     "next": "11.1.2",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
