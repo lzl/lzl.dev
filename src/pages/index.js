@@ -1,17 +1,32 @@
-import Redis from 'ioredis'
 import LeftRight from '@/components/LeftRight'
+import React from 'react'
 
-const redis = new Redis(process.env.REDIS_URL)
+function Counter() {
+  const [count, setCount] = React.useState(0)
 
-function Right({ counter }) {
-  return <p>do the work ({counter})</p>
+  React.useEffect(() => {
+    fetch('/api/counter')
+      .then((res) => res.json())
+      .then((data) => {
+        setCount(data)
+      })
+  }, [])
+
+  if (count > 0) {
+    return <span>({count})</span>
+  }
+
+  return null
 }
 
-export default function Index({ counter }) {
-  return <LeftRight right={<Right counter={counter} />} />
+function Right() {
+  return (
+    <p>
+      do the work <Counter />
+    </p>
+  )
 }
 
-export async function getServerSideProps() {
-  const counter = await redis.incr('counter')
-  return { props: { counter } }
+export default function Index() {
+  return <LeftRight right={<Right />} />
 }
