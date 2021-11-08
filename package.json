@@ -17,6 +17,7 @@
     "clsx": "^1.1.1",
     "immer": "^9.0.6",
     "next": "11.1.2",
+    "observable-hooks": "^4.1.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
     "proxy-memoize": "^0.3.7",
@@ -28,6 +29,7 @@
     "react-redux": "^7.2.5",
     "react-table": "^7.7.0",
     "react-tracked": "^1.7.4",
+    "rxjs": "^7.4.0",
     "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
