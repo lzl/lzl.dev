@@ -1,5 +1,5 @@
-import { Suspense } from "react";
-import Counter from "./counter";
+import { Suspense } from 'react'
+import Counter from './counter'
 
 export default function Home() {
   return (
@@ -11,5 +11,5 @@ export default function Home() {
         </Suspense>
       </div>
     </main>
-  );
+  )
 }
