@@ -6,7 +6,7 @@ export default function Home() {
     <main className="p-2">
       <div className="flex gap-1">
         <p>Hello world</p>
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<>(...)</>}>
           <Counter />
         </Suspense>
       </div>
