@@ -6,6 +6,7 @@ export default async function Counter() {
     headers: {
       Authorization: token,
     },
+    cache: 'no-store',
   }).then((res) => res.json())
 
   return <div>({data.result})</div>
