@@ -1,3 +1,6 @@
+import { revalidateTag } from 'next/cache'
+import CounterButton from './counter-button'
+
 const url = `${process.env.REDIS_API_URL}/incr/counter`
 const token = `Bearer ${process.env.REDIS_API_TOKEN}`
 
@@ -7,7 +10,19 @@ export default async function Counter() {
       Authorization: token,
     },
     cache: 'no-store',
+    next: {
+      tags: ['counter'],
+    },
   }).then((res) => res.json())
 
-  return <div>({data.result})</div>
+  async function incrCounter() {
+    'use server'
+    revalidateTag('counter')
+  }
+
+  return (
+    <form action={incrCounter}>
+      <CounterButton value={data.result} />
+    </form>
+  )
 }
