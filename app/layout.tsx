@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export const metadata: Metadata = {
   title: 'lzl.dev',
+  description: '@lzl',
 }
 
 export default function RootLayout({
