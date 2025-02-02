@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Counter from './counter'
 
 export default function Home() {
@@ -5,7 +6,9 @@ export default function Home() {
     <main className="p-2">
       <div className="flex gap-1">
         <p>Hello world</p>
-        <Counter />
+        <Suspense>
+          <Counter />
+        </Suspense>
       </div>
     </main>
   )
