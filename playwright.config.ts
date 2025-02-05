@@ -34,4 +34,4 @@ export default defineConfig({
       NEXT_DISABLE_DEVTOOLS: '1',
     },
   },
-}) 
+})

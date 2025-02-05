@@ -2,11 +2,7 @@ import { ReactElement } from 'react'
 import { render } from '@testing-library/react'
 
 export function renderServerComponent(component: ReactElement) {
-  return render(
-    <div suppressHydrationWarning>
-      {component}
-    </div>
-  )
+  return render(<div suppressHydrationWarning>{component}</div>)
 }
 
 export function createFormData(data: Record<string, string> = {}) {
@@ -15,4 +11,4 @@ export function createFormData(data: Record<string, string> = {}) {
     formData.append(key, value)
   })
   return formData
-} 
+}
