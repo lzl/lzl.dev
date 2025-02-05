@@ -2,6 +2,7 @@
   "name": "lzl.dev",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
@@ -35,6 +36,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^1.4.0",
     "jsdom": "^26.0.0",
     "msw": "^2.7.0",
     "postcss": "^8.5.1",
