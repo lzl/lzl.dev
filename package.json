@@ -2,32 +2,45 @@
   "name": "lzl.dev",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,mdx}\" --cache"
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"./**/*.{js,jsx,ts,tsx,mdx}\" --cache",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.3",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-tailwindcss": "^3.18.0",
     "next": "15.2.0-canary.33",
     "prettier": "^3.4.2",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^22.13.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
-    "eslint": "9.19.0",
-    "eslint-config-next": "15.1.6",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^26.0.0",
+    "msw": "^2.7.0",
     "postcss": "^8.5.1",
     "tailwindcss": "^4.0.3",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
   }
 }
