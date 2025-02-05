@@ -7,7 +7,11 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'html'],
+      exclude: [
+        'tests/**',
+        '**/*.config.{js,ts,mjs,mts}',
+      ],
     },
   },
 }) 

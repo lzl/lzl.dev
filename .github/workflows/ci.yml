@@ -48,7 +48,7 @@ jobs:
         run: pnpm format:check
 
       - name: Run unit and integration tests
-        run: pnpm test:coverage
+        run: pnpm test
 
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps
