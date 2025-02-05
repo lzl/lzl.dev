@@ -25,20 +25,20 @@
 ### 3.1 设置测试环境
 
 1. **安装必要依赖**
-   - 安装 Vitest、React Testing Library 及相关依赖：
+   - 安装 Vitest、React Testing Library 及相关依赖：**（已完成）**
      ```bash
-     npm install --save-dev vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event
+     pnpm add -D vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event
      ```
-   - 安装 MSW 以模拟 API 请求：
+   - 安装 MSW 以模拟 API 请求：**（已完成）**
      ```bash
-     npm install --save-dev msw
+     pnpm add -D msw
      ```
-   - 安装 Playwright 用于端到端测试：
+   - 安装 Playwright 用于端到端测试：**（已完成）**
      ```bash
-     npm install --save-dev @playwright/test
+     pnpm add -D @playwright/test
      ```
    
-2. **配置 Vitest**
+2. **配置 Vitest** **（已完成）**
    - 创建或更新 `vitest.config.ts` 配置文件，设置项目中需要测试的文件路径、全局设置及与 TypeScript 的兼容性配置，并确保引入 MSW 的全局 setup 文件（例如 `setupTests.ts`）。
 
 3. **文件和目录结构规划**
