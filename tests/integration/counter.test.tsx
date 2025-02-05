@@ -1,4 +1,4 @@
-import { screen, fireEvent } from '@testing-library/react'
+import { screen, fireEvent, act } from '@testing-library/react'
 import { describe, expect, it, vi, beforeEach, beforeAll, afterAll, afterEach } from 'vitest'
 import { revalidateTag } from 'next/cache'
 import { HttpResponse, http } from 'msw'
@@ -66,7 +66,9 @@ describe('Counter', () => {
     const form = container.querySelector('form')
     expect(form).toBeInTheDocument()
 
-    await fireEvent.submit(form!)
+    await act(async () => {
+      await fireEvent.submit(form!)
+    })
     expect(revalidateTag).toHaveBeenCalledWith('counter')
   })
 
