@@ -1,17 +1,17 @@
-import { screen, fireEvent, act } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
+import { http, HttpResponse } from 'msw'
+import { setupServer } from 'msw/node'
+import { revalidateTag } from 'next/cache'
 import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
   describe,
   expect,
   it,
   vi,
-  beforeEach,
-  beforeAll,
-  afterAll,
-  afterEach,
 } from 'vitest'
-import { revalidateTag } from 'next/cache'
-import { HttpResponse, http } from 'msw'
-import { setupServer } from 'msw/node'
 import { renderServerComponent } from '../test-utils'
 
 // Mock next/cache
@@ -47,7 +47,7 @@ const server = setupServer(
   }),
   http.post('https://api.upstash.com/v2/redis/incr/counter', () => {
     return HttpResponse.json({ result: 'OK' })
-  })
+  }),
 )
 
 describe('Counter', () => {
@@ -107,7 +107,7 @@ describe('Counter', () => {
     server.use(
       http.get('https://api.upstash.com/v2/redis/incr/counter', () => {
         return HttpResponse.error()
-      })
+      }),
     )
 
     try {

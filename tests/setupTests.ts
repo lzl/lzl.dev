@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
-import { afterAll, afterEach, beforeAll } from 'vitest'
+import { http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
-import { HttpResponse, http } from 'msw'
+import { afterAll, afterEach, beforeAll } from 'vitest'
 
 // 定义模拟的 API handlers
 export const handlers = [
