@@ -1,6 +1,6 @@
-import { render, screen } from '@testing-library/react'
-import { describe, expect, it, vi, afterEach, beforeEach } from 'vitest'
 import CounterButton from '@/app/counter-button'
+import { render, screen } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 const mockUseFormStatus = vi.fn()
 

@@ -1,17 +1,17 @@
-import { screen, fireEvent, act } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
+import { http, HttpResponse } from 'msw'
+import { setupServer } from 'msw/node'
+import { revalidateTag } from 'next/cache'
 import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
   describe,
   expect,
   it,
   vi,
-  beforeEach,
-  beforeAll,
-  afterAll,
-  afterEach,
 } from 'vitest'
-import { revalidateTag } from 'next/cache'
-import { HttpResponse, http } from 'msw'
-import { setupServer } from 'msw/node'
 import { renderServerComponent } from '../test-utils'
 
 // Mock next/cache

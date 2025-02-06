@@ -1,7 +1,7 @@
 import {
-  revalidateTag,
   unstable_cacheLife as cacheLife,
   unstable_cacheTag as cacheTag,
+  revalidateTag,
 } from 'next/cache'
 import CounterButton from './counter-button'
 
