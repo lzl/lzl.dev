@@ -47,7 +47,7 @@ const server = setupServer(
   }),
   http.post('https://api.upstash.com/v2/redis/incr/counter', () => {
     return HttpResponse.json({ result: 'OK' })
-  })
+  }),
 )
 
 describe('Counter', () => {
@@ -107,7 +107,7 @@ describe('Counter', () => {
     server.use(
       http.get('https://api.upstash.com/v2/redis/incr/counter', () => {
         return HttpResponse.error()
-      })
+      }),
     )
 
     try {
