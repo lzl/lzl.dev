@@ -21,7 +21,7 @@
     "@tailwindcss/postcss": "^4.0.3",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
-    "next": "15.2.0-canary.33",
+    "next": "16.1.5",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
